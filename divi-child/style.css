@@ -1,0 +1,78 @@
+/*
+ Theme Name:     Divi Child
+ Theme URI:      https://www.elegantthemes.com/gallery/divi/
+ Description:    Divi Child Theme
+ Author:         Elegant Themes
+ Author URI:     https://www.elegantthemes.com
+ Template:       Divi
+ Version:        1.0.0
+*/
+ 
+ 
+/* =Theme customization starts here
+------------------------------------------------------- */
+
+body,
+a {
+	font-family: 'Open Sans',Helvetica,Arial,Lucida,sans-serif;
+}
+.et_pb_pagebuilder_layout.single-slideshow #page-container .et_pb_row {
+	width: 100%;
+}
+.cs-left, .cs-left {
+	float: none;
+	width: 100%;
+}
+@media screen and ( min-width: 680px ) {
+	.cs-left {
+		float: left;
+		width: 45%;
+	}
+	.cs-right {
+		float: right;
+		width: 50%;
+	}
+}
+.cs-btn {
+	display: inline-block;
+	padding: 10px 25px;
+	color: #fff;
+	text-transform: uppercase;
+	background-color: #5e1a72;
+	font-size: 20px;
+	font-weight: 600;
+	font-family: 'Open Sans',Helvetica,Arial,Lucida,sans-serif;
+	margin-top: 20px;
+	margin-bottom: 40px;
+}
+.cs-btn:hover {
+	opacity: 0.9;
+}
+.cs-sep {
+	-webkit-box-shadow: 0 1px 0 rgba(0,0,0,.1);
+	-moz-box-shadow: 0 1px 0 rgba(0,0,0,.1);
+	box-shadow: 0 1px 0 rgba(0,0,0,.1);
+}
+@media (min-width: 981px) {
+	#main-content .container:before {
+		background-color: transparent;
+	}
+	.et_header_style_centered #main-header div#et-top-navigation {
+		border-top: #ccc 1px solid;
+		border-bottom: #ccc 1px solid;
+		padding: 25px 0 20px;
+	}
+}
+#main-header {
+	-webkit-box-shadow: 0 0px 0 rgba(0,0,0,0);
+	-moz-box-shadow: 0 0px 0 rgba(0,0,0,0);
+	box-shadow: 0 0px 0 rgba(0,0,0,0);
+}
+h1.entry-title,
+h2.entry-title {
+	color: #5e1a72;
+	font-weight: 600;
+}
+.et_header_style_centered #top-menu>li>a {
+	padding-bottom: 0px;
+}
