@@ -76,3 +76,9 @@ h2.entry-title {
 .et_header_style_centered #top-menu>li>a {
 	padding-bottom: 0px;
 }
+.slide-next {
+	text-align: center;
+}
+.slide-next a {
+	background: #da662e;
+}
