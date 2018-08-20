@@ -52,6 +52,7 @@ get_header(); ?>
 						endif;
 					} ?>
 					<div class="cs-right">
+					<div class="post-category"><?php echo get_the_category_list(', '); ?></div>
 				<?php if ( ! in_array( $post_format, array( 'link', 'audio', 'quote' ) ) ) : ?>
 					<?php if ( ! in_array( $post_format, array( 'link', 'audio' ) ) ) : ?>
 						<h2 class="entry-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
@@ -70,7 +71,7 @@ get_header(); ?>
 					?>
 				<?php endif; ?>
 				<br>
-							<p><a href="<?php the_permalink(); ?>" class="cs-btn">READ ARTICLE</a></p>
+							<p><a href="<?php the_permalink(); ?>" class="cs-btn cs-btn-border">READ ARTICLE</a></p>
 						</div>
 						<div class="clearfix cs-sep"></div>
 					</article> <!-- .et_pb_post -->
@@ -88,7 +89,7 @@ get_header(); ?>
 			?>
 			</div> <!-- #left-area -->
 
-			<?php get_sidebar(); ?>
+			<div class="right-banner"><?php the_field('home_banner', 'option'); ?></div>
 		</div> <!-- #content-area -->
 	</div> <!-- .container -->
 </div> <!-- #main-content -->

@@ -27,15 +27,17 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 		else:
 	?>
 	<div class="container">
+		<div class="top-banner"><?php the_field('top_banner', 'option'); ?></div>
 		<div id="content-area" class="clearfix">
-			<div id="left-area">
+			<div class="threecolumn-left"><?php the_field('left_banner', 'option'); ?></div>
+			<div class="threecolumn-middle">
 			<?php while ( have_posts() ) : the_post(); ?>
 				<?php if (et_get_option('divi_integration_single_top') <> '' && et_get_option('divi_integrate_singletop_enable') == 'on') echo(et_get_option('divi_integration_single_top')); ?>
 				<article id="post-<?php the_ID(); ?>" <?php post_class( 'et_pb_post' ); ?>>
 					<?php if ( ( 'off' !== $show_default_title && $is_page_builder_used ) || ! $is_page_builder_used ) { ?>
 						<div class="et_post_meta_wrapper">
+							<div class="post-category"><?php echo get_the_category_list(', '); ?></div>
 							<h1 class="entry-title"><?php the_title(); ?></h1>
-
 						<?php
 							if ( ! post_password_required() ) :
 
@@ -147,6 +149,10 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 						}
 					?>
 					</div> <!-- .et_post_meta_wrapper -->
+					<div class="content-banners">
+						<div class="content-left-banner"><?php the_field('content_left_banner', 'option'); ?></div>
+						<div class="content-right-banner"><?php the_field('content_right_banner', 'option'); ?></div>
+					</div>
 				</article> <!-- .et_pb_post -->
 
 			<?php endwhile; ?>
@@ -162,8 +168,10 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 			<?php } ?>
 			</div> <!-- #left-area -->
 
-			<?php get_sidebar(); ?>
+			<?php //get_sidebar(); ?>
+			<div class="threecolumn-right"><?php the_field('right_banner', 'option'); ?></div>
 		</div> <!-- #content-area -->
+		<div class="bottom-banner"><?php the_field('bottom_banner', 'option'); ?></div>
 	</div> <!-- .container -->
 	<?php endif; ?>
 </div> <!-- #main-content -->

@@ -11,25 +11,25 @@ add_action( 'init', 'cs_slideshow_init' );
  */
 function cs_slideshow_init() {
 	$labels = array(
-		'name'               => _x( 'Slide', 'post type general name', 'cs' ),
-		'singular_name'      => _x( 'Slide', 'post type singular name', 'cs' ),
-		'menu_name'          => _x( 'Slides', 'admin menu', 'cs' ),
-		'name_admin_bar'     => _x( 'Slideshow', 'add new on admin bar', 'cs' ),
-		'add_new'            => _x( 'Add New', 'book', 'cs' ),
-		'add_new_item'       => __( 'Add New Slideshow', 'cs' ),
-		'new_item'           => __( 'New Slideshow', 'cs' ),
-		'edit_item'          => __( 'Edit Slideshow', 'cs' ),
-		'view_item'          => __( 'View Slideshow', 'cs' ),
-		'all_items'          => __( 'All Slides', 'cs' ),
-		'search_items'       => __( 'Search Slides', 'cs' ),
-		'parent_item_colon'  => __( 'Parent Slides:', 'cs' ),
-		'not_found'          => __( 'No Slides found.', 'cs' ),
-		'not_found_in_trash' => __( 'No Slides found in Trash.', 'cs' )
+		'name'               => 'Slide',
+		'singular_name'      => 'Slide',
+		'menu_name'          => 'Slides',
+		'name_admin_bar'     => 'Slides',
+		'add_new'            => 'Add New',
+		'add_new_item'       => 'Add New Slide',
+		'new_item'           => 'New Slide',
+		'edit_item'          => 'Edit Slide',
+		'view_item'          => 'View Slide',
+		'all_items'          => 'All Slides',
+		'search_items'       => 'Search Slides',
+		'parent_item_colon'  => 'Parent Slide:',
+		'not_found'          => 'No Slides found.',
+		'not_found_in_trash' => 'No Slides found in Trash.',
 	);
 
 	$args = array(
 		'labels'             => $labels,
-    'description'        => __( 'Description.', 'cs' ),
+    'description'        => 'Description.',
 		'public'             => true,
 		'publicly_queryable' => true,
 		'show_ui'            => true,
@@ -44,6 +44,41 @@ function cs_slideshow_init() {
 	);
 
 	register_post_type( 'slide', $args );
+	
+	$labels = array(
+		'name'               => 'Offer',
+		'singular_name'      => 'Offer',
+		'menu_name'          => 'Offers',
+		'name_admin_bar'     => 'Offers',
+		'add_new'            => 'Add New',
+		'add_new_item'       => 'Add New Offer',
+		'new_item'           => 'New Offer',
+		'edit_item'          => 'Edit Offer',
+		'view_item'          => 'View Offer',
+		'all_items'          => 'All Offers',
+		'search_items'       => 'Search Offers',
+		'parent_item_colon'  => 'Parent Offer:',
+		'not_found'          => 'No Offers found.',
+		'not_found_in_trash' => 'No Offers found in Trash.',
+	);
+
+	$args = array(
+		'labels'             => $labels,
+    'description'        => 'Description.',
+		'public'             => true,
+		'publicly_queryable' => true,
+		'show_ui'            => true,
+		'show_in_menu'       => true,
+		'query_var'          => true,
+		'rewrite'            => array( 'slug' => 'offer' ),
+		'capability_type'    => 'post',
+		'has_archive'        => true,
+		'hierarchical'       => true,
+		'menu_position'      => 5,
+		'supports'           => array( 'title', 'editor', 'author', 'thumbnail', 'custom-fields', 'excerpt', 'comments', 'page-attributes' )
+	);
+
+	register_post_type( 'offer', $args );
 }
 
 
@@ -95,4 +130,40 @@ function theme_parse_request( $query ) {
 			$query->set( 'post_type', 'slide' );
 		}
 	}
+}
+
+// Add theme options
+acf_add_options_sub_page( array(
+	'title'  => 'Theme Fields',
+	'parent' => 'themes.php',
+) );
+
+function et_pb_postinfo_meta( $postinfo, $date_format, $comment_zero, $comment_one, $comment_more ){
+	$postinfo_meta = '';
+
+	if ( in_array( 'author', $postinfo ) )
+		$postinfo_meta .= ' ' . esc_html__( 'By', 'et_builder' ) . ' <span class="author vcard">' . et_pb_get_the_author_posts_link() . '</span>';
+
+	if ( in_array( 'date', $postinfo ) ) {
+		if ( in_array( 'author', $postinfo ) ) $postinfo_meta .= ' | ';
+		$postinfo_meta .= '<span class="published">' . esc_html( get_the_time( wp_unslash( 'F j, Y' ) ) ) . '</span>';
+	}
+
+	/*if ( in_array( 'categories', $postinfo ) ) {
+		$categories_list = get_the_category_list(', ');
+
+		// do not output anything if no categories retrieved
+		if ( '' !== $categories_list ) {
+			if ( in_array( 'author', $postinfo ) || in_array( 'date', $postinfo ) )	$postinfo_meta .= ' | ';
+
+			$postinfo_meta .= $categories_list;
+		}
+	}*/
+
+	if ( in_array( 'comments', $postinfo ) ){
+		if ( in_array( 'author', $postinfo ) || in_array( 'date', $postinfo ) || in_array( 'categories', $postinfo ) ) $postinfo_meta .= ' | ';
+		$postinfo_meta .= et_pb_get_comments_popup_link( $comment_zero, $comment_one, $comment_more );
+	}
+
+	return $postinfo_meta;
 }

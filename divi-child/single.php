@@ -34,6 +34,7 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 				<article id="post-<?php the_ID(); ?>" <?php post_class( 'et_pb_post' ); ?>>
 					<?php if ( ( 'off' !== $show_default_title && $is_page_builder_used ) || ! $is_page_builder_used ) { ?>
 						<div class="et_post_meta_wrapper">
+							<div class="post-category"><?php echo get_the_category_list(', '); ?></div>
 							<h1 class="entry-title"><?php the_title(); ?></h1>
 
 						<?php
@@ -149,11 +150,35 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 					</div> <!-- .et_post_meta_wrapper -->
 					<?php if($slideshow_link = get_field('slideshow_link')) echo '<div class="slide-next"><a class="cs-btn" href="'.$slideshow_link.'">START SLIDESHOW</a></div>'; ?>
 				</article> <!-- .et_pb_post -->
-
+				<?php 
+					if($offers = get_field('offers')) {
+						$width = (int) apply_filters( 'et_pb_index_blog_image_width', 1080 );
+						$height = (int) apply_filters( 'et_pb_index_blog_image_height', 675 );
+						$i = 1;
+						foreach($offers as $offer) { $titletext = get_the_title($offer->ID); ?>
+							<article id="offer-<?php $offer->ID; ?>" <?php post_class( array('et_pb_post', 'offer-post') ); ?>>
+								<h2 class="entry-title"><a href="<?php echo get_permalink($offer->ID); ?>"><?php echo $i .'. '. $titletext; ?></h2>
+								<?php
+										$thumb = '';
+										$classtext = 'et_featured_image';
+										$thumbnail = get_thumbnail( $width, $height, $classtext, $titletext, $titletext, false, false, $offer );
+										$thumb = $thumbnail["thumb"];
+										if($thumb) print_thumbnail( $thumb, $thumbnail["use_timthumb"], $titletext, $width, $height );
+									?>
+								<div class="entry-content">
+								<?php
+									echo apply_filters('the_content', $offer->post_content);
+								?>
+								</div> <!-- .entry-content -->
+							</article> <!-- .et_pb_post -->
+						<?php $i++; }
+					}
+				?>
 			<?php endwhile; ?>
 			</div> <!-- #left-area -->
 
-			<?php get_sidebar(); ?>
+			<?php //get_sidebar(); ?>
+			<div class="right-banner"><?php the_field('right_banner', 'option'); ?></div>
 		</div> <!-- #content-area -->
 	</div> <!-- .container -->
 	<?php endif; ?>
