@@ -88,8 +88,14 @@ get_header(); ?>
 				wp_reset_postdata();
 			?>
 			</div> <!-- #left-area -->
-
-			<div class="right-banner"><?php the_field('home_banner', 'option'); ?></div>
+			<?php 
+				$banner = get_field('home_banner', 'option');
+				if($banner != '') {
+					if(get_field('home_banner_publish', 'option') || current_user_can('administrator')) {
+						echo '<div class="home-banner">'.$banner.'</div>';
+					}
+				}
+			?>
 		</div> <!-- #content-area -->
 	</div> <!-- .container -->
 </div> <!-- #main-content -->

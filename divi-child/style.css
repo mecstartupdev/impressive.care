@@ -92,6 +92,7 @@ h2.entry-title {
 .post-category {
 	margin-bottom: 7px;
 }
+.post-category,
 .post-category a {
 	font-size: 20px;
 	font-weight: 600;

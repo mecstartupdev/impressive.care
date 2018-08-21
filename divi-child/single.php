@@ -178,7 +178,14 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 			</div> <!-- #left-area -->
 
 			<?php //get_sidebar(); ?>
-			<div class="right-banner"><?php the_field('right_banner', 'option'); ?></div>
+			<?php 
+				$banner = get_field('right_banner', 'option');
+				if($banner != '') {
+					if(get_field('right_banner_publish', 'option') || current_user_can('administrator')) {
+						echo '<div class="right-banner">'.$banner.'</div>';
+					}
+				}
+			?>
 		</div> <!-- #content-area -->
 	</div> <!-- .container -->
 	<?php endif; ?>
