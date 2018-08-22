@@ -175,6 +175,9 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 					}
 				?>
 			<?php endwhile; ?>
+			<?php if($post->post_type == 'offer' && ($call_to_action_title = get_field('call_to_action_title'))) { ?>
+				<div class="slide-next"><a class="cs-btn" href="<?php echo get_field('call_to_action_link'); ?>"><?php echo $call_to_action_title ?> >></a></div>
+			<?php } ?>
 			</div> <!-- #left-area -->
 
 			<?php //get_sidebar(); ?>

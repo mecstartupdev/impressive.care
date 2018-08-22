@@ -123,9 +123,10 @@ function theme_remove_slug( $post_link, $post, $leavename ) {
 
 add_action( 'pre_get_posts', 'theme_parse_request' );
 function theme_parse_request( $query ) {
+	if(!$query->is_main_query()) return;
 	global $wp;
 	$request = explode('/', $wp->request);
-	if(count($request) > 1) {
+	if(!empty($request[0])) {
 		if ( get_page_by_path( $request[0], OBJECT, 'slide' ) ) {
 			$query->set( 'post_type', 'slide' );
 		}
