@@ -148,16 +148,21 @@ body:not(.home) #page-container #main-header div#et-top-navigation {
 	border-top: 1px solid #ccc;
 	padding-top: 30px;
 }
+#left-area {
+	width: calc(100% - 300px);
+}
 .threecolumn-left {
-	width: 20%;
+	width: 160px;
 	float: left;
 }
 .threecolumn-middle {
-	width: 60%;
+	width: calc(100% - 460px);
 	float: left;
+	padding: 0 10px;
 }
-.threecolumn-right {
-	width: 20%;
+.threecolumn-right,
+.right-banner {
+	width: 300px;
 	float: right;
 	text-align: right;
 }

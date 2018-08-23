@@ -204,11 +204,20 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 			<?php } } ?>
 			</div> <!-- #left-area -->
 			<?php 
-				$banner = get_field('right_banner', 'option');
-				if($banner != '') {
-					if(get_field('right_banner_publish', 'option') || current_user_can('administrator')) {
-						echo '<div class="threecolumn-right">'.$banner.'</div>';
+				$right_banner = get_field('right_banner', 'option');
+				if($right_banner != '') {
+					if(!get_field('right_banner_publish', 'option') && !current_user_can('administrator')) {
+						$right_banner = false;
 					}
+				}
+				$right_banner_2 = get_field('right_banner_2', 'option');
+				if($right_banner_2 != '') {
+					if(!get_field('right_banner_2_publish', 'option') && !current_user_can('administrator')) {
+						$right_banner_2 = false;
+					}
+				}
+				if(!empty($right_banner) || !empty($right_banner_2)) {
+					echo '<div class="threecolumn-right">'.$right_banner.$right_banner_2.'</div>';
 				}
 			?>
 		</div> <!-- #content-area -->
