@@ -142,8 +142,11 @@ acf_add_options_sub_page( array(
 function et_pb_postinfo_meta( $postinfo, $date_format, $comment_zero, $comment_one, $comment_more ){
 	$postinfo_meta = '';
 
-	if ( in_array( 'author', $postinfo ) )
-		$postinfo_meta .= ' ' . esc_html__( 'By', 'et_builder' ) . ' <span class="author vcard">' . et_pb_get_the_author_posts_link() . '</span>';
+	if(!$author_text = get_field('author')) {
+		$author_text = et_pb_get_the_author_posts_link();
+	}
+	//if ( in_array( 'author', $postinfo ) )
+		$postinfo_meta .= ' ' . esc_html__( 'By', 'et_builder' ) . ' <span class="author vcard">' . $author_text . '</span>';
 
 	if ( in_array( 'date', $postinfo ) ) {
 		if ( in_array( 'author', $postinfo ) ) $postinfo_meta .= ' | ';
