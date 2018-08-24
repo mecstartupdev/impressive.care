@@ -7,8 +7,10 @@ get_header(); ?>
 			<div id="left-area">
 		<?php
 			$home_args = array(
-				'post_type' => 'post',
-				'post_status' => 'publish',
+				'post_type' => 'any',
+				'posts_status' => 'publish',
+				'post__in' => get_field('home_posts'),
+				'orderby' => 'post__in'
 				);
 			$home_query = new WP_Query( $home_args );
 
