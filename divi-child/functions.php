@@ -46,20 +46,20 @@ function cs_slideshow_init() {
 	register_post_type( 'slide', $args );
 	
 	$labels = array(
-		'name'               => 'Offer',
-		'singular_name'      => 'Offer',
-		'menu_name'          => 'Offers',
-		'name_admin_bar'     => 'Offers',
+		'name'               => 'Multioffers',
+		'singular_name'      => 'Multioffers',
+		'menu_name'          => 'Multioffers',
+		'name_admin_bar'     => 'Multioffers',
 		'add_new'            => 'Add New',
-		'add_new_item'       => 'Add New Offer',
-		'new_item'           => 'New Offer',
-		'edit_item'          => 'Edit Offer',
-		'view_item'          => 'View Offer',
-		'all_items'          => 'All Offers',
-		'search_items'       => 'Search Offers',
-		'parent_item_colon'  => 'Parent Offer:',
-		'not_found'          => 'No Offers found.',
-		'not_found_in_trash' => 'No Offers found in Trash.',
+		'add_new_item'       => 'Add New Multioffer',
+		'new_item'           => 'New Multioffer',
+		'edit_item'          => 'Edit Multioffer',
+		'view_item'          => 'View Multioffer',
+		'all_items'          => 'All Multioffers',
+		'search_items'       => 'Search Multioffers',
+		'parent_item_colon'  => 'Parent Multioffer:',
+		'not_found'          => 'No Multioffers found.',
+		'not_found_in_trash' => 'No Multioffers found in Trash.',
 	);
 
 	$args = array(
