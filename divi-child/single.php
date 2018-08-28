@@ -156,8 +156,8 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 						$height = (int) apply_filters( 'et_pb_index_blog_image_height', 675 );
 						$i = 1;
 						foreach($offers as $offer) { $titletext = get_the_title($offer->ID); ?>
-							<article id="offer-<?php $offer->ID; ?>" <?php post_class( array('et_pb_post', 'offer-post') ); ?>>
-								<h2 class="entry-title"><a href="<?php echo get_permalink($offer->ID); ?>"><?php echo $i .'. '. $titletext; ?></h2>
+							<article id="offer-<?php echo $offer->ID; ?>" <?php post_class( array('et_pb_post', 'offer-post') ); ?>>
+								<h2 class="entry-title"><a href="<?php echo get_permalink($offer->ID); ?>"><?php echo $i .'. '. $titletext; ?></a></h2>
 								<?php
 										$thumb = '';
 										$classtext = 'et_featured_image';
@@ -171,6 +171,9 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 								?>
 								</div> <!-- .entry-content -->
 							</article> <!-- .et_pb_post -->
+							<?php if($call_to_action_title = get_field('call_to_action_title', $offer->ID)) { ?>
+								<div class="slide-next"><a class="cs-btn" href="<?php echo get_field('call_to_action_link', $offer->ID); ?>"><?php echo $call_to_action_title ?> >></a></div>
+							<?php } ?>
 						<?php $i++; }
 					}
 				?>
@@ -181,23 +184,27 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 			</div> <!-- #left-area -->
 
 			<?php //get_sidebar(); ?>
+			<div class="right-banner">
 			<?php 
 				$right_banner = get_field('right_banner', 'option');
 				if($right_banner != '') {
-					if(!get_field('right_banner_publish', 'option') && !current_user_can('administrator')) {
-						$right_banner = false;
+					if(get_field('right_banner_publish', 'option') || current_user_can('administrator')) {
+						echo $right_banner;
+						$right_banner_show = true;
 					}
 				}
 				$right_banner_2 = get_field('right_banner_2', 'option');
 				if($right_banner_2 != '') {
-					if(!get_field('right_banner_2_publish', 'option') && !current_user_can('administrator')) {
-						$right_banner_2 = false;
+					if(get_field('right_banner_2_publish', 'option') || current_user_can('administrator')) {
+						echo $right_banner_2;
+						$right_banner2_show = true;
 					}
 				}
-				if(!empty($right_banner) || !empty($right_banner_2)) {
-					echo '<div class="right-banner">'.$right_banner.$right_banner_2.'</div>';
+				if(!$right_banner_show && !$right_banner2_show) {
+					echo '&nbsp;';
 				}
 			?>
+			</div>
 		</div> <!-- #content-area -->
 	</div> <!-- .container -->
 	<?php endif; ?>

@@ -36,14 +36,18 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 			}
 		?>
 		<div id="content-area" class="clearfix">
+			<div class="threecolumn-left">
 			<?php 
 				$banner = get_field('left_banner', 'option');
 				if($banner != '') {
 					if(get_field('left_banner_publish', 'option') || current_user_can('administrator')) {
-						echo '<div class="threecolumn-left">'.$banner.'</div>';
+						echo $banner;
+						$banner_show = true;
 					}
 				}
+				if(!$banner_show) echo '&nbsp;';
 			?>
+			</div>
 			<div class="threecolumn-middle">
 			<?php while ( have_posts() ) : the_post(); ?>
 				<?php if (et_get_option('divi_integration_single_top') <> '' && et_get_option('divi_integrate_singletop_enable') == 'on') echo(et_get_option('divi_integration_single_top')); ?>
@@ -203,23 +207,27 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 				<div class="slide-next"><a class="cs-btn" href="<?php echo get_permalink($next_post[0]->ID); ?>">NEXT SLIDE >></a></div>
 			<?php } } ?>
 			</div> <!-- #left-area -->
+			<div class="threecolumn-right">
 			<?php 
 				$right_banner = get_field('right_banner', 'option');
 				if($right_banner != '') {
-					if(!get_field('right_banner_publish', 'option') && !current_user_can('administrator')) {
-						$right_banner = false;
+					if(get_field('right_banner_publish', 'option') || current_user_can('administrator')) {
+						echo $right_banner;
+						$right_banner_show = true;
 					}
 				}
 				$right_banner_2 = get_field('right_banner_2', 'option');
 				if($right_banner_2 != '') {
-					if(!get_field('right_banner_2_publish', 'option') && !current_user_can('administrator')) {
-						$right_banner_2 = false;
+					if(get_field('right_banner_2_publish', 'option') || current_user_can('administrator')) {
+						echo $right_banner_2;
+						$right_banner2_show = true;
 					}
 				}
-				if(!empty($right_banner) || !empty($right_banner_2)) {
-					echo '<div class="threecolumn-right">'.$right_banner.$right_banner_2.'</div>';
+				if(!$right_banner_show && !$right_banner2_show) {
+					echo '&nbsp;';
 				}
 			?>
+			</div>
 		</div> <!-- #content-area -->
 		<?php 
 			$banner = get_field('bottom_banner', 'option');

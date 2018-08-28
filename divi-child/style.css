@@ -79,6 +79,9 @@ h2.entry-title {
 	color: #5d1c71;
 	font-weight: 600;
 }
+h1.entry-title {
+	font-size: 38px;
+}
 .et_header_style_centered #top-menu>li>a {
 	padding-bottom: 0px;
 }
@@ -222,4 +225,12 @@ body:not(.home) #page-container #main-header div#et-top-navigation {
 }
 .offer-post h2 {
 	margin-bottom: 15px;
+	padding-bottom: 0;
+}
+.offer-post h2 a {
+	color: #4a4a4a;
+}
+.offer-post,
+.offer-post .et_pb_text {
+	padding: 0 !important;
 }
