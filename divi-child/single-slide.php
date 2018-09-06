@@ -61,7 +61,7 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 						<?php
 							if ( ! post_password_required() ) :
 
-								//et_divi_post_meta();
+								et_divi_post_meta();
 
 								$thumb = '';
 

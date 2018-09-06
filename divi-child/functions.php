@@ -171,3 +171,13 @@ function et_pb_postinfo_meta( $postinfo, $date_format, $comment_zero, $comment_o
 
 	return $postinfo_meta;
 }
+
+function et_divi_post_meta() {
+	/*$postinfo = is_single() ? et_get_option( 'divi_postinfo2' ) : et_get_option( 'divi_postinfo1' );
+
+	if ( $postinfo ) :
+		echo '<p class="post-meta">';
+		echo et_pb_postinfo_meta( $postinfo, et_get_option( 'divi_date_format', 'M j, Y' ), esc_html__( '0 comments', 'Divi' ), esc_html__( '1 comment', 'Divi' ), '% ' . esc_html__( 'comments', 'Divi' ) );
+		echo '</p>';
+	endif;*/
+}
