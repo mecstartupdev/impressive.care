@@ -40,7 +40,8 @@ function cs_slideshow_init() {
 		'has_archive'        => true,
 		'hierarchical'       => true,
 		'menu_position'      => 5,
-		'supports'           => array( 'title', 'editor', 'author', 'thumbnail', 'custom-fields', 'excerpt', 'comments', 'page-attributes' )
+		'supports'           => array( 'title', 'editor', 'author', 'thumbnail', 'custom-fields', 'excerpt', 'comments', 'page-attributes' ),
+		'taxonomies'         => array( 'category' ),
 	);
 
 	register_post_type( 'slide', $args );
