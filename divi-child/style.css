@@ -24,7 +24,8 @@ a {
 	width: 100%;
 }
 #main-content .container {
-    padding: 50px 0;
+	padding: 50px 0;
+	max-width: 1200px;
 }
 @media screen and ( min-width: 680px ) {
 	.cs-left {
@@ -73,6 +74,9 @@ a {
 	-webkit-box-shadow: 0 0px 0 rgba(0,0,0,0);
 	-moz-box-shadow: 0 0px 0 rgba(0,0,0,0);
 	box-shadow: 0 0px 0 rgba(0,0,0,0);
+}
+.title-content {
+	margin-left: 170px;
 }
 h1.entry-title,
 h2.entry-title {
@@ -169,6 +173,9 @@ body:not(.home) #page-container #main-header div#et-top-navigation {
 	float: right;
 	text-align: right;
 }
+.content-top-banner {
+	text-align: center;
+}
 .content-banners {
 	margin: 10px 0;
 }
@@ -180,22 +187,26 @@ body:not(.home) #page-container #main-header div#et-top-navigation {
 .content-left-banner {
 	width: calc(50% - 5px);
 	float: left;
+	text-align: right;
 	padding-right: 5px;
 }
 .content-right-banner {
 	width: calc(50% - 5px);
 	float: right;
-	text-align: right;
+	text-align: left;
 	padding-left: 5px;
 }
 .top-banner,
 .bottom-banner {
 	text-align: center;
 }
-.top-banner {
+/*.top-banner {
 	margin-bottom: 30px;
-}
-@media (max-width: 1260px) {
+}*/
+@media (max-width: 1200px) {
+	.title-content {
+		margin-left: 10px;
+	}
 	.threecolumn-left,
 	.threecolumn-right,
 	.right-banner	{

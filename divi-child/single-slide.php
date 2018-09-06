@@ -27,39 +27,41 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 		else:
 	?>
 	<div class="container">
-		<?php 
-			$banner = get_field('top_banner', 'option');
-			if($banner != '') {
-				if(get_field('top_banner_publish', 'option') || current_user_can('administrator')) {
-					echo '<div class="top-banner">'.$banner.'</div>';
-				}
-			}
-		?>
 		<div id="content-area" class="clearfix">
-			<div class="threecolumn-left">
-			<?php 
-				$banner = get_field('left_banner', 'option');
-				if($banner != '') {
-					if(get_field('left_banner_publish', 'option') || current_user_can('administrator')) {
-						echo $banner;
-						$banner_show = true;
-					}
-				}
-				if(!$banner_show) echo '&nbsp;';
-			?>
-			</div>
-			<div class="threecolumn-middle">
 			<?php while ( have_posts() ) : the_post(); ?>
 				<?php if (et_get_option('divi_integration_single_top') <> '' && et_get_option('divi_integrate_singletop_enable') == 'on') echo(et_get_option('divi_integration_single_top')); ?>
+				<div class="title-content">
+					<div class="post-category"><?php echo get_the_title($post->post_parent); ?></div>
+					<h1 class="entry-title"><?php the_title(); ?></h1>
+				</div>
+				<div class="threecolumn-left">
+					<?php 
+						$banner = get_field('left_banner', 'option');
+						if($banner != '') {
+							if(get_field('left_banner_publish', 'option') || current_user_can('administrator')) {
+								echo $banner;
+								$banner_show = true;
+							}
+						}
+						if(!$banner_show) echo '&nbsp;';
+					?>
+				</div>
+				<div class="threecolumn-middle">
+				<?php // top banner
+					$banner = get_field('top_banner', 'option');
+					if($banner != '') {
+						if(get_field('top_banner_publish', 'option') || current_user_can('administrator')) {
+							echo '<div class="top-banner">'.$banner.'</div>';
+						}
+					}
+				?>
 				<article id="post-<?php the_ID(); ?>" <?php post_class( 'et_pb_post' ); ?>>
 					<?php if ( ( 'off' !== $show_default_title && $is_page_builder_used ) || ! $is_page_builder_used ) { ?>
-						<div class="et_post_meta_wrapper">
-							<div class="post-category"><?php echo get_the_title($post->post_parent); ?></div>
-							<h1 class="entry-title"><?php the_title(); ?></h1>
+						<!--div class="et_post_meta_wrapper"-->
 						<?php
 							if ( ! post_password_required() ) :
 
-								et_divi_post_meta();
+								//et_divi_post_meta();
 
 								$thumb = '';
 
@@ -88,56 +90,18 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 							?>
 
 							<?php
-								$text_color_class = et_divi_get_post_text_color();
-
-								$inline_style = et_divi_get_post_bg_inline_style();
-
-								switch ( $post_format ) {
-									case 'audio' :
-										$audio_player = et_pb_get_audio_player();
-
-										if ( $audio_player ) {
-											printf(
-												'<div class="et_audio_content%1$s"%2$s>
-													%3$s
-												</div>',
-												esc_attr( $text_color_class ),
-												$inline_style,
-												$audio_player
-											);
-										}
-
-										break;
-									case 'quote' :
-										printf(
-											'<div class="et_quote_content%2$s"%3$s>
-												%1$s
-											</div> <!-- .et_quote_content -->',
-											et_get_blockquote_in_content(),
-											esc_attr( $text_color_class ),
-											$inline_style
-										);
-
-										break;
-									case 'link' :
-										printf(
-											'<div class="et_link_content%3$s"%4$s>
-												<a href="%1$s" class="et_link_main_url">%2$s</a>
-											</div> <!-- .et_link_content -->',
-											esc_url( et_get_link_url() ),
-											esc_html( et_get_link_url() ),
-											esc_attr( $text_color_class ),
-											$inline_style
-										);
-
-										break;
-								}
-
 							endif;
 						?>
-					</div> <!-- .et_post_meta_wrapper -->
+					<!--/div> <!-- .et_post_meta_wrapper -->
 				<?php  } ?>
-
+					<?php // top content banner
+						$banner = get_field('top_content_banner', 'option');
+						if($banner != '') {
+							if(get_field('top_content_banner_publish', 'option') || current_user_can('administrator')) {
+								echo '<div class="content-top-banner">'.$banner.'</div>';
+							}
+						}
+					?>
 					<div class="entry-content">
 					<?php
 						do_action( 'et_before_content' );
@@ -206,7 +170,15 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 			?>
 				<div class="slide-next"><a class="cs-btn" href="<?php echo get_permalink($next_post[0]->ID); ?>">NEXT SLIDE >></a></div>
 			<?php } } ?>
-			</div> <!-- #left-area -->
+			<?php //bottom banner
+				$banner = get_field('bottom_banner', 'option');
+				if($banner != '') {
+					if(get_field('bottom_banner_publish', 'option') || current_user_can('administrator')) {
+						echo '<div class="bottom-banner">'.$banner.'</div>';
+					}
+				}
+			?>
+			</div> <!-- threecolumn-middle -->
 			<div class="threecolumn-right">
 			<?php 
 				$right_banner = get_field('right_banner', 'option');
@@ -229,14 +201,6 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 			?>
 			</div>
 		</div> <!-- #content-area -->
-		<?php 
-			$banner = get_field('bottom_banner', 'option');
-			if($banner != '') {
-				if(get_field('bottom_banner_publish', 'option') || current_user_can('administrator')) {
-					echo '<div class="bottom-banner">'.$banner.'</div>';
-				}
-			}
-		?>
 	</div> <!-- .container -->
 	<?php endif; ?>
 </div> <!-- #main-content -->
