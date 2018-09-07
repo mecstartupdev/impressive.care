@@ -207,6 +207,10 @@ body:not(.home) #page-container #main-header div#et-top-navigation {
 /*.top-banner {
 	margin-bottom: 30px;
 }*/
+.content-section {
+	max-width: 728px;
+	margin: 0 auto;
+}
 @media (max-width: 1200px) {
 	.title-content {
 		margin-left: 10px;
