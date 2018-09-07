@@ -182,3 +182,11 @@ function et_divi_post_meta() {
 		echo '</p>';
 	endif;*/
 }
+
+// add slides to category page
+add_action('pre_get_posts', 'action_pre_get_posts');
+function action_pre_get_posts($query) {
+  if(is_category()) {
+    $query->set('post_type', array('post', 'slide'));
+	}
+}
