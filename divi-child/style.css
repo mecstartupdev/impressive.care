@@ -86,6 +86,10 @@ h2.entry-title {
 h1.entry-title {
 	font-size: 38px;
 }
+/*body.category .entry-featured-image-url img {
+	max-width: 845px;
+	max-height: 321px;
+}*/
 .et_header_style_centered #top-menu>li>a {
 	padding-bottom: 0px;
 }

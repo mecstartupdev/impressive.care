@@ -190,3 +190,12 @@ function action_pre_get_posts($query) {
     $query->set('post_type', array('post', 'slide'));
 	}
 }
+
+// add image sizes
+/*add_filter('et_theme_image_sizes', 'theme_image_sizes');
+function theme_image_sizes($et_theme_image_sizes) {
+	$et_theme_image_sizes['845x321'] = '845x321';
+	
+	return $et_theme_image_sizes;
+}*/
+add_image_size( '845x321', 845, 321, true );
