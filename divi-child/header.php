@@ -192,7 +192,7 @@
 
 				<ul id="mobile_menu_slide" class="<?php echo esc_attr( $slide_menu_class ); ?>">
 
-				<?php
+				<?php /*
 					if ( '' == $slide_nav ) :
 				?>
 						<?php if ( 'on' == et_get_option( 'divi_home_link' ) ) { ?>
@@ -204,7 +204,8 @@
 				<?php
 					else :
 						echo( $slide_nav );
-					endif;
+					endif;*/
+					echo( $slide_nav );
 				?>
 
 				</ul>
@@ -262,7 +263,7 @@
 
 							$primaryNav = wp_nav_menu( array( 'theme_location' => 'primary-menu', 'container' => '', 'fallback_cb' => '', 'menu_class' => $menuClass, 'menu_id' => 'top-menu', 'echo' => false ) );
 
-							if ( '' == $primaryNav ) :
+							/*if ( '' == $primaryNav ) :
 						?>
 							<ul id="top-menu" class="<?php echo esc_attr( $menuClass ); ?>">
 								<?php if ( 'on' == et_get_option( 'divi_home_link' ) ) { ?>
@@ -270,12 +271,13 @@
 								<?php }; ?>
 
 								<?php //show_page_menu( $menuClass, false, false ); ?>
-								<?php show_categories_menu( $menuClass, false ); ?>
+								<?php //show_categories_menu( $menuClass, false ); ?>
 							</ul>
 						<?php
 							else :
 								echo( $primaryNav );
-							endif;
+							endif;*/
+							echo( $primaryNav );
 						?>
 						</nav>
 					<?php endif; ?>

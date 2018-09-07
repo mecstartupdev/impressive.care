@@ -113,7 +113,7 @@ h1.entry-title {
 	font-size: 48px;
 	font-weight: 700;
 }
-body:not(.home) #main-header {
+/*body:not(.home) #main-header {
 	text-align: center;
 }
 body:not(.home) #main-header .et_menu_container {
@@ -130,7 +130,7 @@ body:not(.home) #page-container #main-header div#et-top-navigation {
 	display: inline-block;
 	border: none;
 	width: auto;
-}
+}*/
 .bottom-nav {
 	display: inline-block;
 	padding: 0;
