@@ -23,7 +23,7 @@ if ( ! is_page_template( 'page-template-blank.php' ) ) : ?>
 
 				<div id="et-footer-nav">
 					<div class="container">
-						<span class="footer-name">Boldly</span>
+						<span class="footer-name"><?php echo esc_attr( get_bloginfo( 'name' ) ); ?></span>
 						<span class="footer-copy">Copyright <?php echo date('Y'); ?>.</span>
 						<?php
 							wp_nav_menu( array(
