@@ -9,7 +9,8 @@ get_header(); ?>
 			$home_args = array(
 				'post_type' => array('post', 'slide'),
 				'posts_status' => 'publish',
-				'posts_per_page' => -1
+				'post_parent' => 0,
+				'posts_per_page' => -1,
 				//'post__in' => get_field('home_posts'),
 				//'orderby' => 'post__in'
 				);
