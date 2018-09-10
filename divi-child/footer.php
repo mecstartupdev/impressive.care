@@ -60,5 +60,6 @@ if ( ! is_page_template( 'page-template-blank.php' ) ) : ?>
 	</div> <!-- #page-container -->
 
 	<?php wp_footer(); ?>
+<script type="text/javascript" src="https://s.skimresources.com/js/124035X1584843.skimlinks.js"></script>
 </body>
 </html>
