@@ -247,6 +247,28 @@ body:not(.home) #page-container #main-header div#et-top-navigation {
 	body:not(.home) #main-header .logo_container {
 		display: block;
 	}
+	/* Hamburger */
+	.et_header_style_centered #et_mobile_nav_menu,
+	.et_header_style_centered #main-header div#et-top-navigation {
+		position: static;
+	}
+	.et_header_style_centered #et_mobile_nav_menu {
+		margin: 0;
+	}
+	.et_header_style_centered #main-header .mobile_nav {
+		background: none;
+		padding: 0;
+	}
+	#et_mobile_nav_menu .select_page {
+		display: none;
+	}
+	.et_header_style_centered .mobile_menu_bar {
+		top: -10px;
+    right: -25px;
+	}
+	#main-content .container {
+		padding-top: 0;
+	}
 }
 @media (min-width: 981px) {
 	#main-content .container:before {
