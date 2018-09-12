@@ -31,7 +31,7 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 			<?php while ( have_posts() ) : the_post(); ?>
 				<?php if (et_get_option('divi_integration_single_top') <> '' && et_get_option('divi_integrate_singletop_enable') == 'on') echo(et_get_option('divi_integration_single_top')); ?>
 				<div class="title-content">
-					<div class="post-category"><?php echo get_the_title($post->post_parent); ?></div>
+					<?php /* ?><div class="post-category"><?php echo get_the_title($post->post_parent); ?></div><?php */ ?>
 					<h1 class="entry-title"><?php the_title(); ?></h1>
 				</div>
 				<div class="threecolumn-left">
