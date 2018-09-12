@@ -26,6 +26,9 @@ body.et-db #et-boc .et_pb_row {
 body.et-db #et-boc .et_pb_section {
 	padding: 0;
 }
+#page-container .offer-post {
+	margin-bottom: 0;
+}
 .cs-left, .cs-left {
 	float: none;
 	width: 100%;
@@ -44,7 +47,7 @@ body.et-db #et-boc .et_pb_section {
 	font-weight: 600;
 	font-family: 'Open Sans',Helvetica,Arial,Lucida,sans-serif;
 	margin-top: 20px;
-	margin-bottom: 40px;
+	margin-bottom: 20px;
 }
 .cs-btn:hover {
 	opacity: 0.9;
