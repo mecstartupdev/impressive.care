@@ -260,3 +260,21 @@ body:not(.home) #page-container #main-header div#et-top-navigation {
 .offer-post .et_pb_text {
 	padding: 0 !important;
 }
+@media (min-width: 680px) {
+	.home article .entry-title {
+		float: right;
+		width: 50%;
+	}
+}
+@media (max-width: 680px) {
+	.et_pb_blog_grid h2, .et_pb_post h2 {
+			font-size: 18px;
+			padding-bottom: 10px;
+	}
+	.post-category {
+		display: none;
+	}
+	h1.entry-title {
+		font-size: 18px;
+	}
+}

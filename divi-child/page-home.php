@@ -21,7 +21,7 @@ get_header(); ?>
 					$post_format = et_pb_post_format(); ?>
 
 					<article id="post-<?php the_ID(); ?>" <?php post_class( 'et_pb_post' ); ?>>
-
+						<h2 class="entry-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 				<?php
 					$thumb = '';
 
@@ -57,10 +57,10 @@ get_header(); ?>
 					} ?>
 					<div class="cs-right">
 					<div class="post-category"><?php echo get_the_category_list(', '); ?></div>
-				<?php if ( ! in_array( $post_format, array( 'link', 'audio', 'quote' ) ) ) : ?>
-					<?php if ( ! in_array( $post_format, array( 'link', 'audio' ) ) ) : ?>
-						<h2 class="entry-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-					<?php endif; ?>
+				<?php //if ( ! in_array( $post_format, array( 'link', 'audio', 'quote' ) ) ) : ?>
+					<?php //if ( ! in_array( $post_format, array( 'link', 'audio' ) ) ) : ?>
+						<?php /* ?><h2 class="entry-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2><?php */ ?>
+					<?php //endif; ?>
 
 					<?php
 						et_divi_post_meta();
@@ -73,7 +73,7 @@ get_header(); ?>
 							the_content();
 						}
 					?>
-				<?php endif; ?>
+				<?php //endif; ?>
 				<br>
 							<p><a href="<?php the_permalink(); ?>" class="cs-btn cs-btn-border">READ ARTICLE</a></p>
 						</div>
