@@ -101,6 +101,12 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 								echo '<div class="content-top-banner">'.$banner.'</div>';
 							}
 						}
+						$banner = get_field('mobile_banner', 'option');
+						if($banner != '') {
+							if(get_field('mobile_banner_publish', 'option') || current_user_can('administrator')) {
+								echo '<div class="mobile-banner">'.$banner.'</div>';
+							}
+						}
 					?>
 					<div class="entry-content">
 					<?php

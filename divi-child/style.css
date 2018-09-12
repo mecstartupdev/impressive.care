@@ -34,16 +34,6 @@ body.et-db #et-boc .et_pb_section {
 	padding: 50px 0;
 	max-width: 1200px;
 }
-@media screen and ( min-width: 680px ) {
-	.cs-left {
-		float: left;
-		width: 45%;
-	}
-	.cs-right {
-		float: right;
-		width: 50%;
-	}
-}
 .cs-btn {
 	display: inline-block;
 	padding: 10px 25px;
@@ -66,16 +56,6 @@ body.et-db #et-boc .et_pb_section {
 	-webkit-box-shadow: 0 1px 0 rgba(0,0,0,.1);
 	-moz-box-shadow: 0 1px 0 rgba(0,0,0,.1);
 	box-shadow: 0 1px 0 rgba(0,0,0,.1);
-}
-@media (min-width: 981px) {
-	#main-content .container:before {
-		background-color: transparent;
-	}
-	.et_header_style_centered #main-header div#et-top-navigation {
-		border-top: #ccc 1px solid;
-		border-bottom: #ccc 1px solid;
-		padding: 25px 0 20px;
-	}
 }
 #main-header {
 	-webkit-box-shadow: 0 0px 0 rgba(0,0,0,0);
@@ -214,10 +194,26 @@ body:not(.home) #page-container #main-header div#et-top-navigation {
 /*.top-banner {
 	margin-bottom: 30px;
 }*/
+.mobile-banner {
+	display: none;
+	text-align: center;
+}
 .content-section {
 	max-width: 728px;
 	margin: 0 auto;
 }
+.offer-post h2 {
+	margin-bottom: 15px;
+	padding-bottom: 0;
+}
+.offer-post h2 a {
+	color: #4a4a4a;
+}
+.offer-post,
+.offer-post .et_pb_text {
+	padding: 0 !important;
+}
+/* RESPONSIVE */
 @media (max-width: 1200px) {
 	.title-content {
 		margin-left: 10px;
@@ -249,18 +245,25 @@ body:not(.home) #page-container #main-header div#et-top-navigation {
 		display: block;
 	}
 }
-.offer-post h2 {
-	margin-bottom: 15px;
-	padding-bottom: 0;
+@media (min-width: 981px) {
+	#main-content .container:before {
+		background-color: transparent;
+	}
+	.et_header_style_centered #main-header div#et-top-navigation {
+		border-top: #ccc 1px solid;
+		border-bottom: #ccc 1px solid;
+		padding: 25px 0 20px;
+	}
 }
-.offer-post h2 a {
-	color: #4a4a4a;
-}
-.offer-post,
-.offer-post .et_pb_text {
-	padding: 0 !important;
-}
-@media (min-width: 680px) {
+@media ( min-width: 680px ) {
+	.cs-left {
+		float: left;
+		width: 45%;
+	}
+	.cs-right {
+		float: right;
+		width: 50%;
+	}
 	.home article .entry-title {
 		float: right;
 		width: 50%;
@@ -268,13 +271,20 @@ body:not(.home) #page-container #main-header div#et-top-navigation {
 }
 @media (max-width: 680px) {
 	.et_pb_blog_grid h2, .et_pb_post h2 {
-			font-size: 18px;
-			padding-bottom: 10px;
+		font-size: 18px;
+		padding-bottom: 10px;
 	}
 	.post-category {
 		display: none;
 	}
 	h1.entry-title {
 		font-size: 18px;
+	}
+	.top-banner,
+	.content-top-banner {
+		display: none;
+	}
+	.mobile-banner {
+		display: block;
 	}
 }
