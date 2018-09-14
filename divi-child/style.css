@@ -72,9 +72,7 @@ h1.entry-title,
 h2.entry-title {
 	color: #5d1c71;
 	font-weight: 600;
-}
-h1.entry-title {
-	font-size: 38px;
+	font-size: 28px;
 }
 /*body.category .entry-featured-image-url img {
 	max-width: 845px;
@@ -302,8 +300,9 @@ body:not(.home) #page-container #main-header div#et-top-navigation {
 	.post-category {
 		display: none;
 	}
-	h1.entry-title {
-		font-size: 18px;
+	h1.entry-title,
+	h2.entry-title {
+		font-size: 26px;
 	}
 	.top-banner,
 	.bottom-banner,
