@@ -28,6 +28,14 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 	?>
 	<div class="container">
 		<div id="content-area" class="clearfix">
+			<?php // top banner
+				$banner = get_field('top_banner', 'option');
+				if($banner != '') {
+					if(get_field('top_banner_publish', 'option') || current_user_can('administrator')) {
+						echo '<div class="top-banner">'.$banner.'</div>';
+					}
+				}
+			?>
 			<div id="left-area">
 			<?php while ( have_posts() ) : the_post(); ?>
 				<?php if (et_get_option('divi_integration_single_top') <> '' && et_get_option('divi_integrate_singletop_enable') == 'on') echo(et_get_option('divi_integration_single_top')); ?>

@@ -306,6 +306,8 @@ body:not(.home) #page-container #main-header div#et-top-navigation {
 		font-size: 18px;
 	}
 	.top-banner,
+	.bottom-banner,
+	.content-right-banner,
 	.content-top-banner {
 		display: none;
 	}

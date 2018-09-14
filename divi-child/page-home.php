@@ -4,6 +4,14 @@ get_header(); ?>
 <div id="main-content">
 	<div class="container">
 		<div id="content-area" class="clearfix">
+			<?php // top banner
+				$banner = get_field('top_banner', 'option');
+				if($banner != '') {
+					if(get_field('top_banner_publish', 'option') || current_user_can('administrator')) {
+						echo '<div class="top-banner">'.$banner.'</div>';
+					}
+				}
+			?>
 			<div id="left-area">
 		<?php
 			$home_args = array(
