@@ -261,11 +261,25 @@ body:not(.home) #page-container #main-header div#et-top-navigation {
 		display: none;
 	}
 	.et_header_style_centered .mobile_menu_bar {
-		top: -10px;
+		top: -6px;
     right: -25px;
+	}
+	.mobile_menu_bar:before {
+		font-size: 50px;
+		color: #5d1c71;
+		font-weight: bold;
 	}
 	#main-content .container {
 		padding-top: 0;
+	}
+}
+@media (max-width: 400px) {
+	.et_header_style_centered #main-header .container {
+		width: 100%;
+		text-align: left;
+	}
+	.et_header_style_centered .mobile_menu_bar {
+		right: 0;
 	}
 }
 @media (min-width: 981px) {
