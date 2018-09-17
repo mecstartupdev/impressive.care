@@ -26,7 +26,7 @@
 
 	<?php wp_head(); ?>
 	
-<?php if( is_front_page() || is_singular( array('post', 'slide') ) || is_category() ) { ?>
+<?php if( is_front_page() || ( is_singular( array('post') ) && 'publish' === get_post_status( $post->ID ) ) || is_category() ) { ?>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-125292761-1"></script>
 <script>
