@@ -17,6 +17,9 @@
 
 	$template_directory_uri = get_template_directory_uri();
 ?>
+<?php if( 'publish' !== get_post_status( $post->ID ) ) { ?>
+<meta name="robots" content="noindex,nofollow">
+<?php } ?>
 
 	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
 
@@ -25,7 +28,6 @@
 	</script>
 
 	<?php wp_head(); ?>
-	
 <?php if( is_front_page() || ( is_singular( array('post') ) && 'publish' === get_post_status( $post->ID ) ) || is_category() ) { ?>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-125292761-1"></script>
