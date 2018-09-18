@@ -45,7 +45,33 @@
   });
 </script>
 <?php } ?>
-
+<!-- Taboola Pixel Code -->
+<script type='text/javascript'>
+  window._tfa = window._tfa || [];
+  window._tfa.push({notify: 'event', name: 'page_view', id: 1161590});
+  !function (t, f, a, x) {
+         if (!document.getElementById(x)) {
+            t.async = 1;t.src = a;t.id=x;f.parentNode.insertBefore(t, f);
+         }
+  }(document.createElement('script'),
+  document.getElementsByTagName('script')[0],
+  '//cdn.taboola.com/libtrc/unip/1161590/tfa.js',
+  'tb_tfa_script');
+</script>
+<noscript>
+  <img src='//trc.taboola.com/1161590/log/3/unip?en=page_view'
+      width='0' height='0' style='display:none'/>
+</noscript>
+<!-- End of Taboola Pixel Code -->
+<?php if( is_singular( array('slide') ) ) { ?>
+<script>
+    _tfa.push({notify: 'event', name: 'Page_Views', id: 1161590});
+</script>
+<noscript>
+    <img src='//trc.taboola.com/1161590/log/3/unip?en=Page_Views'
+        width='0' height='0' style='display:none'/>
+</noscript>
+<?php } ?>
 </head>
 <body <?php body_class(); ?>>
 <?php
