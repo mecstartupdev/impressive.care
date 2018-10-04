@@ -1,7 +1,30 @@
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
-	<meta charset="<?php bloginfo( 'charset' ); ?>" />
+<meta charset="<?php bloginfo( 'charset' ); ?>" />
+<?php if( is_front_page() || ( is_singular( array('post') ) && 'publish' === get_post_status( $post->ID ) ) || is_category() ) { ?>
+<style>.async-hide { opacity: 0 !important} </style>
+<script>(function(a,s,y,n,c,h,i,d,e){s.className+=' '+y;h.start=1*new Date;
+h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
+(a[n]=a[n]||[]).hide=h;setTimeout(function(){i();h.end=null},c);h.timeout=c;
+})(window,document.documentElement,'async-hide','dataLayer',4000,
+{'GTM-TTW44TK':true});</script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-125292761-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-125292761-1', { 'optimize_id': 'GTM-TTW44TK'});
+</script>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-9355881364844265",
+    enable_page_level_ads: true
+  });
+</script>
+<?php } ?>
 <?php
 	elegant_description();
 	elegant_keywords();
@@ -28,23 +51,6 @@
 	</script>
 
 	<?php wp_head(); ?>
-<?php if( is_front_page() || ( is_singular( array('post') ) && 'publish' === get_post_status( $post->ID ) ) || is_category() ) { ?>
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-125292761-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'UA-125292761-1');
-</script>
-<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<script>
-  (adsbygoogle = window.adsbygoogle || []).push({
-    google_ad_client: "ca-pub-9355881364844265",
-    enable_page_level_ads: true
-  });
-</script>
-<?php } ?>
 <!-- Taboola Pixel Code -->
 <script type='text/javascript'>
   window._tfa = window._tfa || [];
