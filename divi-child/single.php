@@ -76,7 +76,7 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 								}*/
 								?>
 								<div class="single-featured-image">
-									<?php the_post_thumbnail( '9999x225', array('class' => 'et_featured_image') ); ?>
+									<?php the_post_thumbnail( '845x321', array('class' => 'et_featured_image') ); ?>
 								</div>
 							<?php
 								$text_color_class = et_divi_get_post_text_color();
@@ -176,7 +176,7 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 										if($thumb) print_thumbnail( $thumb, $thumbnail["use_timthumb"], $titletext, $width, $height );*/
 									?>
 								<div class="single-featured-image">
-									<?php echo get_the_post_thumbnail( $offer->ID, '9999x225', array('class' => 'et_featured_image') ); ?>
+									<?php echo get_the_post_thumbnail( $offer->ID, '9999x350', array('class' => 'et_featured_image') ); ?>
 								</div>
 								<div class="entry-content">
 								<?php

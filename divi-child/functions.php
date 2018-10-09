@@ -195,4 +195,4 @@ function theme_image_sizes($et_theme_image_sizes) {
 	return $et_theme_image_sizes;
 }*/
 add_image_size( '845x321', 845, 321, true );
-add_image_size( '9999x225', 9999, 225 );
+add_image_size( '9999x350', 9999, 350 );
