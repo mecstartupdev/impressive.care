@@ -50,7 +50,7 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 
 								et_divi_post_meta();
 
-								$thumb = '';
+								/*$thumb = '';
 
 								$width = (int) apply_filters( 'et_pb_index_blog_image_width', 1080 );
 
@@ -73,9 +73,11 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 									print_thumbnail( $thumb, $thumbnail["use_timthumb"], $titletext, $width, $height );
 								} else if ( 'gallery' === $post_format ) {
 									et_pb_gallery_images();
-								}
-							?>
-
+								}*/
+								?>
+								<div class="single-featured-image">
+									<?php the_post_thumbnail( '9999x225', array('class' => 'et_featured_image') ); ?>
+								</div>
 							<?php
 								$text_color_class = et_divi_get_post_text_color();
 
@@ -160,19 +162,22 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 				</article> <!-- .et_pb_post -->
 				<?php 
 					if($offers = get_field('offers')) {
-						$width = (int) apply_filters( 'et_pb_index_blog_image_width', 1080 );
-						$height = (int) apply_filters( 'et_pb_index_blog_image_height', 675 );
+						//$width = (int) apply_filters( 'et_pb_index_blog_image_width', 1080 );
+						//$height = (int) apply_filters( 'et_pb_index_blog_image_height', 675 );
 						$i = 1;
 						foreach($offers as $offer) { $titletext = get_the_title($offer->ID); ?>
 							<article id="offer-<?php echo $offer->ID; ?>" <?php post_class( array('et_pb_post', 'offer-post') ); ?>>
 								<h2 class="entry-title"><a href="<?php echo get_permalink($offer->ID); ?>"><?php echo $i .'. '. $titletext; ?></a></h2>
 								<?php
-										$thumb = '';
-										$classtext = 'et_featured_image';
+										//$thumb = '';
+										/*$classtext = 'et_featured_image';
 										$thumbnail = get_thumbnail( $width, $height, $classtext, $titletext, $titletext, false, false, $offer );
 										$thumb = $thumbnail["thumb"];
-										if($thumb) print_thumbnail( $thumb, $thumbnail["use_timthumb"], $titletext, $width, $height );
+										if($thumb) print_thumbnail( $thumb, $thumbnail["use_timthumb"], $titletext, $width, $height );*/
 									?>
+								<div class="single-featured-image">
+									<?php echo get_the_post_thumbnail( $offer->ID, '9999x225', array('class' => 'et_featured_image') ); ?>
+								</div>
 								<div class="entry-content">
 								<?php
 									echo apply_filters('the_content', $offer->post_content);

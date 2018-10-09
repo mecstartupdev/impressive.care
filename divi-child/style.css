@@ -214,6 +214,9 @@ body:not(.home) #page-container #main-header div#et-top-navigation {
 .offer-post .et_pb_text {
 	padding: 0 !important;
 }
+.single-featured-image {
+	text-align: center;
+}
 /* RESPONSIVE */
 @media (max-width: 1200px) {
 	.title-content {

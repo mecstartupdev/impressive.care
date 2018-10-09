@@ -55,7 +55,7 @@ get_header(); ?>
 						<div class="cs-left">
 							<a class="entry-featured-image-url" href="<?php the_permalink(); ?>">
 								<?php //print_thumbnail( $thumb, $thumbnail["use_timthumb"], $titletext, $width, $height ); ?>
-								<?php the_post_thumbnail('full'); ?>
+								<?php the_post_thumbnail('9999x225'); ?>
 							</a>
 						</div>
 					<?php

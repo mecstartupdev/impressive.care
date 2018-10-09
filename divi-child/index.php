@@ -24,7 +24,7 @@
 						<h2 class="entry-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 					<?php endif; ?>
 						<a class="entry-featured-image-url" href="<?php the_permalink(); ?>">
-							<?php the_post_thumbnail( '845x321' ); ?>
+							<?php the_post_thumbnail( '9999x225' ); ?>
 						</a>
 					<?php
 						et_divi_post_meta();
