@@ -214,6 +214,9 @@ body:not(.home) #page-container #main-header div#et-top-navigation {
 .offer-post .et_pb_text {
 	padding: 0 !important;
 }
+.offer-cta {
+	margin-bottom: 45px;
+}
 .single-featured-image {
 	text-align: center;
 }
