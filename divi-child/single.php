@@ -185,7 +185,7 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 								</div> <!-- .entry-content -->
 							</article> <!-- .et_pb_post -->
 							<?php if($call_to_action_title = get_field('call_to_action_title', $offer->ID)) { ?>
-								<div class="slide-next offer-cta"><a class="cs-btn" href="<?php echo get_field('call_to_action_link', $offer->ID); ?>"><?php echo $call_to_action_title ?> >></a></div>
+								<div class="slide-next offer-cta"><a class="cs-btn" target="_blank" href="<?php echo get_field('call_to_action_link', $offer->ID); ?>"><?php echo $call_to_action_title ?> >></a></div>
 							<?php } ?>
 						<?php $i++; }
 					}
