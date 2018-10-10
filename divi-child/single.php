@@ -160,14 +160,14 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 					</div> <!-- .et_post_meta_wrapper -->
 					<?php if($slideshow_link = get_field('slideshow_link')) echo '<div class="slide-next"><a class="cs-btn" href="'.$slideshow_link.'">START SLIDESHOW</a></div>'; ?>
 				</article> <!-- .et_pb_post -->
-				<?php 
-					if($offers = get_field('offers')) {
-						//$width = (int) apply_filters( 'et_pb_index_blog_image_width', 1080 );
-						//$height = (int) apply_filters( 'et_pb_index_blog_image_height', 675 );
-						$i = 1;
-						foreach($offers as $offer) { $titletext = get_the_title($offer->ID); ?>
+				<?php
+					if($offer_sections = get_field('multioffers')) {
+						foreach($offer_sections as $section) {
+						echo '<section>';
+						if( !empty($section['section_title']) ) echo '<h2 class="entry-title">'.$section['section_title'].'</h2>';
+						foreach($section['offers'] as $offer) { $titletext = get_the_title($offer->ID); ?>
 							<article id="offer-<?php echo $offer->ID; ?>" <?php post_class( array('et_pb_post', 'offer-post') ); ?>>
-								<h2 class="entry-title"><a href="<?php echo get_permalink($offer->ID); ?>"><?php echo $i .'. '. $titletext; ?></a></h2>
+								<h2 class="entry-title"><a href="<?php echo get_permalink($offer->ID); ?>"><?php echo /*$i .'. '.*/ $titletext; ?></a></h2>
 								<?php
 										//$thumb = '';
 										/*$classtext = 'et_featured_image';
@@ -187,9 +187,9 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 							<?php if($call_to_action_title = get_field('call_to_action_title', $offer->ID)) { ?>
 								<div class="slide-next offer-cta"><a class="cs-btn" target="_blank" href="<?php echo get_field('call_to_action_link', $offer->ID); ?>"><?php echo $call_to_action_title ?> >></a></div>
 							<?php } ?>
-						<?php $i++; }
-					}
-				?>
+						<?php } ?>
+						</section>
+						<?php }	} ?>
 			<?php endwhile; ?>
 			<?php if($post->post_type == 'offer' && ($call_to_action_title = get_field('call_to_action_title'))) { ?>
 				<div class="slide-next"><a class="cs-btn" href="<?php echo get_field('call_to_action_link'); ?>"><?php echo $call_to_action_title ?> >></a></div>
