@@ -217,6 +217,10 @@ body:not(.home) #page-container #main-header div#et-top-navigation {
 .offer-cta {
 	margin-bottom: 45px;
 }
+.offer-cta .cs-btn {
+	width: 60%;
+	border-radius: 25px;
+}
 .single-featured-image {
 	text-align: center;
 }
