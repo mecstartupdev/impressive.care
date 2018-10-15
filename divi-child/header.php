@@ -40,7 +40,7 @@ h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
 
 	$template_directory_uri = get_template_directory_uri();
 ?>
-<?php if( 'publish' !== get_post_status( $post->ID ) ) { ?>
+<?php if( get_post_status( $post->ID ) !== 'publish' || get_field('seo_no_index') ) { ?>
 <meta name="robots" content="noindex,nofollow">
 <?php } ?>
 
