@@ -224,6 +224,14 @@ body:not(.home) #page-container #main-header div#et-top-navigation {
 .single-featured-image {
 	text-align: center;
 }
+body.single section h2.section-title {
+	text-align: center;
+	margin-bottom: 20px;
+	border-bottom: 1px solid purple;
+}
+h2.offer-title {
+	font-size: 25px;
+}
 /* RESPONSIVE */
 @media (max-width: 1200px) {
 	.title-content {

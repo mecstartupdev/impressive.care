@@ -164,10 +164,10 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 					if($offer_sections = get_field('multioffers')) {
 						foreach($offer_sections as $section) {
 						echo '<section>';
-						if( !empty($section['section_title']) ) echo '<h2 class="entry-title">'.$section['section_title'].'</h2>';
+						if( !empty($section['section_title']) ) echo '<h2 class="entry-title section-title">'.$section['section_title'].'</h2>';
 						foreach($section['offers'] as $offer) { $titletext = get_the_title($offer->ID); ?>
 							<article id="offer-<?php echo $offer->ID; ?>" <?php post_class( array('et_pb_post', 'offer-post') ); ?>>
-								<h2 class="entry-title"><a href="<?php echo get_permalink($offer->ID); ?>"><?php echo /*$i .'. '.*/ $titletext; ?></a></h2>
+								<h2 class="entry-title offer-title"><a href="<?php echo get_permalink($offer->ID); ?>"><?php echo /*$i .'. '.*/ $titletext; ?></a></h2>
 								<?php
 										//$thumb = '';
 										/*$classtext = 'et_featured_image';
