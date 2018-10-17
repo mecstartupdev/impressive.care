@@ -167,7 +167,7 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 				));
 				if($next_post) {
 			?>
-				<div class="slide-next"><a class="cs-btn" href="<?php echo get_permalink($next_post[0]->ID); ?>">START SLIDESHOW</a></div>
+				<div class="slide-next"><a class="cs-btn" href="<?php echo get_permalink($next_post[0]->ID); ?>">NEXT SLIDE >></a></div>
 			<?php	} } else {
 				$next_post = get_posts(array(
 					'post_type' => 'slide',
