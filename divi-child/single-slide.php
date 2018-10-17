@@ -156,11 +156,13 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 				</article> <!-- .et_pb_post -->
 
 			<?php endwhile; ?>
-			<?php	
-				if(!$post->post_parent) {
+			<?php
+				$parent_slide = get_field('parent_slide');
+				if(!$parent_slide) {
 				$next_post = get_posts(array(
 					'post_type' => 'slide',
-					'post_parent' => $post->ID,
+					'meta_key' => 'parent_slide',
+					'meta_value' => $post->ID,
 					'menu_order' => 1
 				));
 				if($next_post) {
@@ -169,7 +171,8 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 			<?php	} } else {
 				$next_post = get_posts(array(
 					'post_type' => 'slide',
-					'post_parent' => $post->post_parent,
+					'meta_key' => 'parent_slide',
+					'meta_value' => $parent_slide,
 					'menu_order' => $post->menu_order + 1
 				));
 				if($next_post) {
