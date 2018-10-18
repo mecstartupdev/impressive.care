@@ -42,7 +42,7 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 				<article id="post-<?php the_ID(); ?>" <?php post_class( 'et_pb_post' ); ?>>
 					<?php if ( ( 'off' !== $show_default_title && $is_page_builder_used ) || ! $is_page_builder_used ) { ?>
 						<div class="et_post_meta_wrapper">
-							<div class="post-category"><?php echo get_the_category_list(', '); ?></div>
+							<div class="post-category"><?php custom_list_categories(); ?></div>
 							<h1 class="entry-title"><?php the_title(); ?></h1>
 
 						<?php

@@ -196,3 +196,16 @@ function theme_image_sizes($et_theme_image_sizes) {
 }*/
 add_image_size( '845x321', 845, 321, true );
 add_image_size( '9999x350', 9999, 350 );
+
+// Post list_categories exclude Uncategorized
+function custom_list_categories() {
+	$out = array();
+  $cats = wp_get_post_categories(get_the_ID());
+	foreach ($cats as $c) {
+		if($c == 1) continue; 
+		$cat = get_category($c);
+		$out[] = '<a href="' . get_category_link($cat) . '" rel="category tag">' . $cat->name . '</a>';
+	}
+	
+	echo implode(', ', $out);
+}

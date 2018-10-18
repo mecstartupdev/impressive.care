@@ -75,7 +75,7 @@ get_header(); ?>
 						endif;
 					} ?>
 					<div class="cs-right">
-					<div class="post-category"><?php echo get_the_category_list(', '); ?></div>
+					<div class="post-category"><?php custom_list_categories(); ?></div>
 				<?php //if ( ! in_array( $post_format, array( 'link', 'audio', 'quote' ) ) ) : ?>
 					<?php //if ( ! in_array( $post_format, array( 'link', 'audio' ) ) ) : ?>
 						<?php /* ?><h2 class="entry-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2><?php */ ?>
