@@ -19,6 +19,17 @@ get_header(); ?>
 				'posts_status' => 'publish',
 				'post_parent' => 0,
 				'posts_per_page' => -1,
+				'meta_query' => array(
+					'relation' => 'OR',
+					array(
+						'key' => 'parent_slide',
+						'compare' => 'NOT EXISTS'
+					),
+					array(
+						'key' => 'parent_slide',
+						'value' => ''
+					)
+				)
 				//'post__in' => get_field('home_posts'),
 				//'orderby' => 'post__in'
 				);
