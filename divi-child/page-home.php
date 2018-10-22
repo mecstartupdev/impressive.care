@@ -42,7 +42,7 @@ get_header(); ?>
 					<article id="post-<?php the_ID(); ?>" <?php post_class( 'et_pb_post' ); ?>>
 						<h2 class="entry-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 				<?php
-					$thumb = '';
+					/*$thumb = '';
 
 					$width = (int) apply_filters( 'et_pb_index_blog_image_width', 1080 );
 
@@ -63,17 +63,18 @@ get_header(); ?>
 								$first_video
 							);
 						elseif ( ! in_array( $post_format, array( 'gallery' ) ) && 'on' === et_get_option( 'divi_thumbnails_index', 'on' ) && '' !== $thumb ) : ?>
-						<div class="cs-left">
-							<a class="entry-featured-image-url" href="<?php the_permalink(); ?>">
-								<?php //print_thumbnail( $thumb, $thumbnail["use_timthumb"], $titletext, $width, $height ); ?>
-								<?php the_post_thumbnail('845x321'); ?>
-							</a>
-						</div>
+						
 					<?php
 						elseif ( 'gallery' === $post_format ) :
 							et_pb_gallery_images();
 						endif;
-					} ?>
+					} */?>
+					<div class="cs-left">
+						<a class="entry-featured-image-url" href="<?php the_permalink(); ?>">
+							<?php //print_thumbnail( $thumb, $thumbnail["use_timthumb"], $titletext, $width, $height ); ?>
+							<?php the_post_thumbnail('845x321'); ?>
+						</a>
+					</div>
 					<div class="cs-right">
 					<div class="post-category"><?php custom_list_categories(); ?></div>
 				<?php //if ( ! in_array( $post_format, array( 'link', 'audio', 'quote' ) ) ) : ?>
@@ -84,12 +85,13 @@ get_header(); ?>
 					<?php
 						et_divi_post_meta();
 
-						if (get_the_excerpt()) {
+						if (has_excerpt()) {
 							the_excerpt();
-						} elseif ( 'on' !== et_get_option( 'divi_blog_style', 'false' ) || ( is_search() && ( 'on' === get_post_meta( get_the_ID(), '_et_pb_use_builder', true ) ) ) ) {
-							truncate_post( 270 );
+						} else { /*if ( 'on' !== et_get_option( 'divi_blog_style', 'false' ) || ( is_search() && ( 'on' === get_post_meta( get_the_ID(), '_et_pb_use_builder', true ) ) ) ) {
+							truncate_post( 200 );
 						} else {
-							the_content();
+							the_content();*/
+							truncate_post( 200 );
 						}
 					?>
 				<?php //endif; ?>
