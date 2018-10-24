@@ -2,7 +2,7 @@
 <html <?php language_attributes(); ?>>
 <head>
 <meta charset="<?php bloginfo( 'charset' ); ?>" />
-<?php if( is_front_page() || ( is_singular( array('post', 'slide') ) && 'publish' === get_post_status( $post->ID ) ) || is_category() ) { ?>
+<?php if( is_front_page() || ( is_singular( array('post', 'slide') ) && get_post_status( $post->ID ) == 'publish' && !get_field('multioffers') ) || is_category() ) { ?>
 <style>.async-hide { opacity: 0 !important} </style>
 <script>(function(a,s,y,n,c,h,i,d,e){s.className+=' '+y;h.start=1*new Date;
 h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
