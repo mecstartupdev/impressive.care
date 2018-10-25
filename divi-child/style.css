@@ -325,24 +325,43 @@ h2.offer-title {
 	}
 }
 @media (max-width: 680px) {
-	.et_pb_blog_grid h2, .et_pb_post h2 {
+	.et_pb_blog_grid h2,
+	.et_pb_post h2 {
 		font-size: 18px;
 		padding-bottom: 10px;
 	}
-	.post-category {
-		display: none;
-	}
 	h1.entry-title,
 	h2.entry-title {
-		font-size: 26px;
+		font-size: 22px;
 	}
 	.top-banner,
 	.bottom-banner,
 	.content-right-banner,
-	.content-top-banner {
+	.content-top-banner,
+	.post-category,
+  body.single section h2.section-title {
 		display: none;
 	}
 	.mobile-banner {
 		display: block;
+	}
+	#main-header .logo_container {
+		text-align: center;
+	}
+	#main-header .logo_container a {
+		font-size: 38px;
+	}
+	.et_pb_post .entry-content,
+	.single .post {
+		padding: 0;
+	}
+	h2.offer-title {
+		font-size: 20px;
+	}
+	.offer-post img {
+		max-width: 60%;
+	}
+	.offer-cta .cs-btn {
+		width: 80%;
 	}
 }
