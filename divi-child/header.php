@@ -78,6 +78,7 @@ h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
         width='0' height='0' style='display:none'/>
 </noscript>
 <?php } ?>
+<?php /* ?>
 <!-- Hotjar Tracking Code -->
 <script>
     (function(h,o,t,j,a,r){
@@ -88,6 +89,15 @@ h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
         r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
         a.appendChild(r);
     })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+</script>
+<?php */ ?>
+<script type="text/javascript">
+    window.smartlook||(function(d) {
+    var o=smartlook=function(){ o.api.push(arguments)},h=d.getElementsByTagName('head')[0];
+    var c=d.createElement('script');o.api=new Array();c.async=true;c.type='text/javascript';
+    c.charset='utf-8';c.src='https://rec.smartlook.com/recorder.js';h.appendChild(c);
+    })(document);
+    smartlook('init', '23f2dc3f661fd5cab4893836a366cc6df85b6c14');
 </script>
 </head>
 <body <?php body_class(); ?>>
