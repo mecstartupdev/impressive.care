@@ -165,9 +165,12 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 						foreach($offer_sections as $section) {
 						echo '<section>';
 						if( !empty($section['section_title']) ) echo '<h2 class="entry-title section-title">'.$section['section_title'].'</h2>';
-						foreach($section['offers'] as $offer) { $titletext = get_the_title($offer->ID); ?>
+						foreach($section['offers'] as $offer) { 
+							$titletext = get_the_title($offer->ID);
+							$call_to_action_link = get_field('call_to_action_link', $offer->ID);
+				?>
 							<article id="offer-<?php echo $offer->ID; ?>" <?php post_class( array('et_pb_post', 'offer-post') ); ?>>
-								<h2 class="entry-title offer-title"><a href="<?php echo get_permalink($offer->ID); ?>"><?php echo /*$i .'. '.*/ $titletext; ?></a></h2>
+								<h2 class="entry-title offer-title"><a target="_blank" href="<?php echo $call_to_action_link; ?>"><?php echo /*$i .'. '.*/ $titletext; ?></a></h2>
 								<?php
 										//$thumb = '';
 										/*$classtext = 'et_featured_image';
@@ -176,7 +179,9 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 										if($thumb) print_thumbnail( $thumb, $thumbnail["use_timthumb"], $titletext, $width, $height );*/
 									?>
 								<div class="single-featured-image">
-									<?php echo get_the_post_thumbnail( $offer->ID, '9999x350', array('class' => 'et_featured_image') ); ?>
+									<a target="_blank" href="<?php echo $call_to_action_link; ?>">
+										<?php echo get_the_post_thumbnail( $offer->ID, '9999x350', array('class' => 'et_featured_image') ); ?>
+									</a>
 								</div>
 								<div class="entry-content">
 								<?php
@@ -184,8 +189,8 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 								?>
 								</div> <!-- .entry-content -->
 							</article> <!-- .et_pb_post -->
-							<?php if($call_to_action_title = get_field('call_to_action_title', $offer->ID)) { ?>
-								<div class="slide-next offer-cta"><a class="cs-btn" target="_blank" href="<?php echo get_field('call_to_action_link', $offer->ID); ?>"><?php echo $call_to_action_title ?> >></a></div>
+							<?php if($call_to_action_link) { ?>
+								<div class="slide-next offer-cta"><a class="cs-btn" target="_blank" href="<?php echo $call_to_action_link; ?>"><?php echo get_field('call_to_action_title', $offer->ID); ?> >></a></div>
 							<?php } ?>
 						<?php } ?>
 						</section>
