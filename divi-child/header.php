@@ -64,20 +64,16 @@ h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
   '//cdn.taboola.com/libtrc/unip/1161590/tfa.js',
   'tb_tfa_script');
 </script>
+<?php if( is_singular( array('slide') ) ) { ?>
+<script>
+    _tfa.push({notify: 'event', name: 'Page_Views', id: 1161590});
+</script>
+<?php } ?>
 <noscript>
   <img src='//trc.taboola.com/1161590/log/3/unip?en=page_view'
       width='0' height='0' style='display:none'/>
 </noscript>
 <!-- End of Taboola Pixel Code -->
-<?php if( is_singular( array('slide') ) ) { ?>
-<script>
-    _tfa.push({notify: 'event', name: 'Page_Views', id: 1161590});
-</script>
-<noscript>
-    <img src='//trc.taboola.com/1161590/log/3/unip?en=Page_Views'
-        width='0' height='0' style='display:none'/>
-</noscript>
-<?php } ?>
 <?php /* ?>
 <!-- Hotjar Tracking Code -->
 <script>
