@@ -150,6 +150,9 @@ body:not(.home) #page-container #main-header div#et-top-navigation {
 #left-area {
 	width: calc(100% - 300px);
 }
+#left-area.is-mop {
+	width: 100%;
+}
 .threecolumn-left {
 	width: 160px;
 	float: left;
@@ -325,6 +328,9 @@ h2.offer-title {
 	}
 }
 @media (max-width: 680px) {
+	#page-container {
+		padding-top: 84px !important;
+	}
 	.et_pb_blog_grid h2,
 	.et_pb_post h2 {
 		font-size: 18px;

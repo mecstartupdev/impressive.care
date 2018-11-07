@@ -6,6 +6,8 @@ $show_default_title = get_post_meta( get_the_ID(), '_et_pb_show_title', true );
 
 $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 
+$offer_sections = get_field('multioffers');
+
 ?>
 
 <div id="main-content">
@@ -29,14 +31,16 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 	<div class="container">
 		<div id="content-area" class="clearfix">
 			<?php // top banner
-				$banner = get_field('top_banner', 'option');
-				if($banner != '') {
-					if(get_field('top_banner_publish', 'option') || current_user_can('administrator')) {
-						echo '<div class="top-banner">'.$banner.'</div>';
+				if(!$offer_sections){
+					$banner = get_field('top_banner', 'option');
+					if($banner != '') {
+						if(get_field('top_banner_publish', 'option') || current_user_can('administrator')) {
+							echo '<div class="top-banner">'.$banner.'</div>';
+						}
 					}
 				}
 			?>
-			<div id="left-area">
+			<div id="left-area"<?php if($offer_sections)echo ' class="is-mop"'; ?>>
 			<?php while ( have_posts() ) : the_post(); ?>
 				<?php if (et_get_option('divi_integration_single_top') <> '' && et_get_option('divi_integrate_singletop_enable') == 'on') echo(et_get_option('divi_integration_single_top')); ?>
 				<article id="post-<?php the_ID(); ?>" <?php post_class( 'et_pb_post' ); ?>>
@@ -161,7 +165,7 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 					<?php if($slideshow_link = get_field('slideshow_link')) echo '<div class="slide-next"><a class="cs-btn" href="'.$slideshow_link.'">START SLIDESHOW</a></div>'; ?>
 				</article> <!-- .et_pb_post -->
 				<?php
-					if($offer_sections = get_field('multioffers')) {
+					if($offer_sections) {
 						foreach($offer_sections as $section) {
 						echo '<section>';
 						if( !empty($section['section_title']) ) echo '<h2 class="entry-title section-title">'.$section['section_title'].'</h2>';
@@ -202,6 +206,7 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 			</div> <!-- #left-area -->
 
 			<?php //get_sidebar(); ?>
+			<?php if(!$offer_sections){ ?>
 			<div class="right-banner">
 			<?php 
 				$right_banner = get_field('right_banner', 'option');
@@ -223,6 +228,7 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 				}
 			?>
 			</div>
+			<?php } ?>
 		</div> <!-- #content-area -->
 	</div> <!-- .container -->
 	<?php endif; ?>
