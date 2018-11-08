@@ -178,8 +178,8 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 				if($next_post) {
 			?>
 				<div class="slide-next"><a class="cs-btn" href="<?php echo get_permalink($next_post[0]->ID); ?>">NEXT SLIDE >></a></div>
-			<?php } elseif($cta_last_slide = get_field('cta_last_slide')) { ?>
-				<div class="slide-next"><a class="cs-btn" href="<?php echo $cta_last_slide; ?>">NEXT SLIDE >></a></div>
+			<?php } elseif($link_last_slide = get_field('link_last_slide')) { ?>
+				<div class="slide-next"><a class="cs-btn" href="<?php echo $link_last_slide; ?>"><?php echo get_field('cta_last_slide'); ?></a></div>
 			<?php } } ?>
 			<?php //bottom banner
 				$banner = get_field('bottom_banner', 'option');
