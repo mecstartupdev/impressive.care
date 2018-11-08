@@ -2,7 +2,6 @@
 <html <?php language_attributes(); ?>>
 <head>
 <meta charset="<?php bloginfo( 'charset' ); ?>" />
-<?php if( is_front_page() || ( is_singular( array('post') ) && get_post_status( $post->ID ) == 'publish' && !get_field('multioffers') ) || is_category() ) { ?>
 <style>.async-hide { opacity: 0 !important} </style>
 <script>(function(a,s,y,n,c,h,i,d,e){s.className+=' '+y;h.start=1*new Date;
 h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
@@ -17,6 +16,7 @@ h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
   gtag('js', new Date());
   gtag('config', 'UA-125292761-1', { 'optimize_id': 'GTM-TTW44TK'});
 </script>
+<?php if( is_front_page() || ( is_singular( array('post') ) && get_post_status( $post->ID ) == 'publish' && !get_field('multioffers') ) || is_category() ) { ?>
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <script>
   (adsbygoogle = window.adsbygoogle || []).push({
