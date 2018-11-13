@@ -209,3 +209,15 @@ function custom_list_categories() {
 	
 	echo implode(', ', $out);
 }
+
+// Old domain redirect
+add_action('init', 'init_404');
+function init_404() {
+	if( $_SERVER['SERVER_NAME'] == 'impressive.care' ) {
+		global $wp_query;
+		$wp_query->set_404();
+		status_header( 404 );
+		get_template_part( 404 );
+		exit();
+	}
+}
