@@ -95,6 +95,7 @@ h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
     })(document);
     smartlook('init', '23f2dc3f661fd5cab4893836a366cc6df85b6c14');
 </script>
+<meta name="google-site-verification" content="Uk3PCUQOItwVXV5S1J5CJZl7WojUWGziJuwDrmj2Mu0" />
 </head>
 <body <?php body_class(); ?>>
 <?php
