@@ -293,6 +293,9 @@ h2.offer-title {
 	#main-content .container {
 		padding-top: 0;
 	}
+	.et_fixed_nav #main-header {
+		position: fixed;
+	}
 }
 @media (max-width: 400px) {
 	.et_header_style_centered #main-header .container {
