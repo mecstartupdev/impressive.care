@@ -91,7 +91,7 @@ get_header(); ?>
 							truncate_post( 200 );
 						} else {
 							the_content();*/
-							truncate_post( 200 );
+							truncate_post( 150 );
 						}
 					?>
 				<?php //endif; ?>

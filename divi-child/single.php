@@ -169,9 +169,10 @@ $offer_sections = get_field('multioffers');
 						foreach($offer_sections as $section) {
 						echo '<section>';
 						if( !empty($section['section_title']) ) echo '<h2 class="entry-title section-title">'.$section['section_title'].'</h2>';
-						foreach($section['offers'] as $offer) { 
-							$titletext = get_the_title($offer->ID);
+						foreach($section['offers'] as $offer) {
 							$call_to_action_link = get_field('call_to_action_link', $offer->ID);
+							if( get_field('amazon_in_stock', $offer->ID) == 'no' ) continue;
+							$titletext = get_the_title($offer->ID);
 				?>
 							<article id="offer-<?php echo $offer->ID; ?>" <?php post_class( array('et_pb_post', 'offer-post') ); ?>>
 								<h2 class="entry-title offer-title"><a target="_blank" href="<?php echo $call_to_action_link; ?>"><?php echo /*$i .'. '.*/ $titletext; ?></a></h2>

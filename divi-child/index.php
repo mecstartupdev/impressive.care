@@ -32,7 +32,7 @@
 						if(has_excerpt()) {
 							the_excerpt();
 						} else {
-							truncate_post( 200 );
+							truncate_post( 150 );
 						}
 					?>
 				<?php endif; ?>

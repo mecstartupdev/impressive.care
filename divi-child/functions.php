@@ -210,14 +210,72 @@ function custom_list_categories() {
 	echo implode(', ', $out);
 }
 
-// Old domain redirect
+// Init
 add_action('init', 'init_404');
 function init_404() {
+	
+	// Old domain redirect
 	if( $_SERVER['SERVER_NAME'] == 'impressive.care' ) {
 		global $wp_query;
 		$wp_query->set_404();
 		status_header( 404 );
 		get_template_part( 404 );
 		exit();
+	}
+	
+	// Check amazon in stock - CRON
+	if( isset($_GET['ex_cron']) && $_GET['ex_cron'] == 'amazon_in_stock' ) {
+		// Testing //
+		$old = get_post_field('post_content', 1306);
+		 $my_post = array(
+      'ID'           => 1306,
+      'post_content' => $old.'ABC ',
+			);
+		wp_update_post( $my_post );
+		$mop_args = array(
+			'post_type' => 'post',
+			'posts_status' => 'any',
+			'posts_per_page' => -1,
+			'meta_query' => array(
+				array(
+					'key' => 'multioffers',
+					'compare' => 'EXISTS'
+				),
+				array(
+					'key' => 'multioffers',
+					'compare' => '!=',
+					'value' => ''
+				)
+			)
+		);
+		// Testing //
+		$mop_query = new WP_Query( $mop_args );
+		if($mop_query) {
+			foreach($mop_query as $mop) {
+				$offer_sections = get_field('multioffers', $mop->ID);
+				if($offer_sections) {
+					foreach($offer_sections as $section) {
+						foreach($section['offers'] as $offer) {
+							$call_to_action_link = get_field('call_to_action_link', $offer->ID);
+							if( amazon_in_stock($call_to_action_link) ) {
+								update_field('amazon_in_stock', 'yes', $offer->ID);
+							} else {
+								update_field('amazon_in_stock', 'no', $offer->ID);
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+// Check amazon in stock
+function amazon_in_stock($url) {
+	$html = file_get_contents($url);
+	if( $html && preg_match_all('/Add to Shopping Cart/', $html) ) {
+		return true;
+	} else {
+		return false;
 	}
 }
