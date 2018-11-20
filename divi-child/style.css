@@ -97,6 +97,9 @@ h2.entry-title {
 	font-weight: 600;
 	color: #4a4a4a;
 }
+#main-header .logo_container {
+	position: relative;
+}
 #main-header .logo_container a {
 	font-size: 48px;
 	font-weight: 700;
@@ -235,6 +238,38 @@ body.single section h2.section-title {
 h2.offer-title {
 	font-size: 25px;
 }
+/* Search */
+.et-search-form input {
+	border: 1px solid #5d1c71;
+	border-radius: 15px;
+	height: 35px;
+	width: 100%;
+	background: no-repeat url(images/search.png);
+	background-position: 94% center;
+	background-size: 23px;
+	padding: 0 33px 0 5px;
+}
+#page-container.search_mobile {
+	padding-top: 111px !important;
+}
+#page-container.search_mobile .et_search_outer {
+	display: block;
+}
+#page-container.search_mobile .et_search_outer,
+#page-container.search_mobile .et-search-form,
+#page-container.search_mobile .et-search-form input	{
+	position: static;
+}
+#page-container.search_mobile .et-search-form {
+	width: 65%;
+	margin: 5px auto 0;
+}
+#page-container.search_mobile .et_search_outer .container.et_search_form_container {
+	opacity: 1;
+}
+.et_header_style_centered header#main-header.et-fixed-header .logo_container {
+	height: auto;
+}
 /* RESPONSIVE */
 @media (max-width: 1200px) {
 	.title-content {
@@ -296,6 +331,18 @@ h2.offer-title {
 	.et_fixed_nav #main-header {
 		position: fixed;
 	}
+	.et_header_style_centered #et_search_icon:before {
+		display: none;
+	}
+	#search_icon {
+		background: no-repeat url(images/search.png);
+		background-size: 25px;
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    right: 35px;
+    top: 4px;
+	}
 }
 @media (max-width: 400px) {
 	.et_header_style_centered #main-header .container {
@@ -304,6 +351,9 @@ h2.offer-title {
 	}
 	.et_header_style_centered .mobile_menu_bar {
 		right: 0;
+	}
+	#search_icon {
+		right: 55px;
 	}
 }
 @media (min-width: 981px) {
@@ -314,6 +364,22 @@ h2.offer-title {
 		border-top: #ccc 1px solid;
 		border-bottom: #ccc 1px solid;
 		padding: 25px 0 20px;
+	}
+	.container.et_search_form_container {
+		opacity: 1;
+		width: 100%;
+	}
+	.et_search_outer {
+		width: 220px;
+    right: 0;
+		top: 20px;
+	}
+	.et-search-form,
+	.et-search-form input {
+		position: static;
+	}
+	span.et_close_search_field {
+		display: none;
 	}
 }
 @media ( min-width: 680px ) {

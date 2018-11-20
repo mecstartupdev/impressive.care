@@ -74,7 +74,6 @@ h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
       width='0' height='0' style='display:none'/>
 </noscript>
 <!-- End of Taboola Pixel Code -->
-<?php /* ?>
 <!-- Hotjar Tracking Code -->
 <script>
     (function(h,o,t,j,a,r){
@@ -86,7 +85,7 @@ h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
         a.appendChild(r);
     })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
 </script>
-<?php */ ?>
+<?php /*
 <script type="text/javascript">
     window.smartlook||(function(d) {
     var o=smartlook=function(){ o.api.push(arguments)},h=d.getElementsByTagName('head')[0];
@@ -95,6 +94,7 @@ h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
     })(document);
     smartlook('init', '23f2dc3f661fd5cab4893836a366cc6df85b6c14');
 </script>
+*/ ?>
 <meta name="google-site-verification" content="Uk3PCUQOItwVXV5S1J5CJZl7WojUWGziJuwDrmj2Mu0" />
 </head>
 <body <?php body_class(); ?>>
@@ -311,6 +311,19 @@ h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
 					<a href="<?php echo esc_url( home_url( '/' ) ); ?>">
 						<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>
 					</a>
+					<div class="et_search_outer">
+						<div class="container et_search_form_container">
+							<form role="search" method="get" class="et-search-form" action="<?php echo esc_url( home_url( '/' ) ); ?>">
+							<?php
+								printf( '<input autocomplete="off" type="search" class="et-search-field" placeholder="%1$s" value="%2$s" name="s" title="%3$s" />',
+									'',
+									get_search_query(),
+									esc_attr__( 'Search for:', 'Divi' )
+								);
+							?>
+							</form>
+						</div>
+					</div>
 				</div>
 			<?php
 				$logo_container = ob_get_clean();
@@ -324,6 +337,7 @@ h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
 				 */
 				echo apply_filters( 'et_html_logo_container', $logo_container );
 			?>
+				<div id="search_icon"></div>
 				<div id="et-top-navigation" data-height="<?php echo esc_attr( et_get_option( 'menu_height', '66' ) ); ?>" data-fixed-height="<?php echo esc_attr( et_get_option( 'minimized_menu_height', '40' ) ); ?>">
 					<?php if ( ! $et_slide_header || is_customize_preview() ) : ?>
 						<nav id="top-menu-nav">
@@ -365,12 +379,12 @@ h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
 						<span class="mobile_menu_bar et_pb_header_toggle et_toggle_<?php echo esc_attr( et_get_option( 'header_style', 'left' ) ); ?>_menu"></span>
 					<?php endif; ?>
 
-					<?php if ( ( false !== et_get_option( 'show_search_icon', true ) && ! $et_slide_header ) || is_customize_preview() ) : ?>
+					<?php /*if ( ( false !== et_get_option( 'show_search_icon', true ) && ! $et_slide_header ) || is_customize_preview() ) : ?>
 					<div id="et_top_search">
 						<span id="et_search_icon"></span>
 					</div>
-					<?php endif; // true === et_get_option( 'show_search_icon', false ) ?>
-
+					<?php endif; */// true === et_get_option( 'show_search_icon', false ) ?>
+					
 					<?php
 
 					/**
@@ -383,20 +397,6 @@ h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
 					?>
 				</div> <!-- #et-top-navigation -->
 			</div> <!-- .container -->
-			<div class="et_search_outer">
-				<div class="container et_search_form_container">
-					<form role="search" method="get" class="et-search-form" action="<?php echo esc_url( home_url( '/' ) ); ?>">
-					<?php
-						printf( '<input type="search" class="et-search-field" placeholder="%1$s" value="%2$s" name="s" title="%3$s" />',
-							esc_attr__( 'Search &hellip;', 'Divi' ),
-							get_search_query(),
-							esc_attr__( 'Search for:', 'Divi' )
-						);
-					?>
-					</form>
-					<span class="et_close_search_field"></span>
-				</div>
-			</div>
 		</header> <!-- #main-header -->
 	<?php
 		$main_header = ob_get_clean();
