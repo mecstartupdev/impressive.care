@@ -58,7 +58,15 @@ if ( ! is_page_template( 'page-template-blank.php' ) ) : ?>
 <?php endif; // ! is_page_template( 'page-template-blank.php' ) ?>
 
 	</div> <!-- #page-container -->
-
+	<div class="subscribe-popup">
+		<div class="subscribe-popup-content">
+			<div class="subscribe-close">×</div>
+			<div class="subscribe-logo">avima.</div>
+			<div class="subscribe-pretext">Enter your email address to receive updates on new articles about beauty, wellness and elective surgery.</div>
+			<?php es_subbox( $namefield = "NO", $desc = "", $group = "test" ); ?>
+			<div class="subscribe-agree">By clicking "Subscribe", I agree to Avima's <a href="/terms-of-use" target="_blank">Terms and Conditions</a> and <a href="/privacy-policy" target="_blank">Privacy Policy</a>. I also agree to receive emails from Avima and I understand I can opt out of the subscription at any time.</div>
+		</div>
+	</div>
 	<?php wp_footer(); ?>
 <script type="text/javascript" src="https://s.skimresources.com/js/124035X1584843.skimlinks.js"></script>
 </body>

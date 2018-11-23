@@ -238,16 +238,17 @@ body.single section h2.section-title {
 h2.offer-title {
 	font-size: 25px;
 }
-/* Search */
-.et-search-form input {
+/* SEARCH */
+.et_search_form_container .et-search-form input {
 	border: 1px solid #5d1c71;
-	border-radius: 15px;
+	border-radius: 30px;
 	height: 35px;
 	width: 100%;
 	background: no-repeat url(images/search.png);
 	background-position: 94% center;
 	background-size: 23px;
 	padding: 0 33px 0 5px;
+	text-transform: none;
 }
 #page-container.search_mobile {
 	padding-top: 111px !important;
@@ -267,8 +268,107 @@ h2.offer-title {
 #page-container.search_mobile .et_search_outer .container.et_search_form_container {
 	opacity: 1;
 }
-.et_header_style_centered header#main-header.et-fixed-header .logo_container {
-	height: auto;
+/* SUBSCRIBE */
+.head_subscribe {
+	position: absolute;
+	top: 14px;
+	left: 0;
+	background: #5d1c71;
+	color: #fff;
+	border-radius: 30px;
+	padding: 10px 30px;
+	cursor: pointer;
+}
+#mobile_menu .head_subscribe {
+	display: block;
+	position: static;
+	width: 75%;
+	margin: 0 auto;
+	text-align: center;
+}
+/* Popup */
+.subscribe-popup {
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background-color: rgba(0,0,0,.8);
+	overflow: auto;
+	z-index: 99999;
+	display: none;
+}
+.subscribe-popup-content {
+	width: 460px;
+	background: #fff;
+	padding: 10px;
+	position: relative;
+}
+.subscribe-popup-content .subscribe-close {
+	position: absolute;
+	right: 3px;
+	top: 5px;
+	font-size: 2.5em;
+	line-height: .5;
+	color: #000;
+	cursor: pointer;
+}
+.subscribe-popup-content .subscribe-logo {
+	font-size: 32px;
+	font-weight: 700;
+	color: #5d1c71;
+	margin: 0 0 25px;
+}
+.subscribe-popup-content .subscribe-pretext {
+	font-size: 14px;
+	text-align: center;
+	font-weight: 600;
+	line-height: 1.4;
+	margin: 0 0 15px;
+}
+.subscribe-popup-content .subscribe-agree {
+	font-size: 12px;
+	font-weight: 100;
+	margin: 5px 0 0;
+	line-height: 1.4;
+}
+.subscribe-popup-content .es_shortcode_form {
+	overflow: hidden;
+}
+.subscribe-popup-content .es_textbox {
+	float: left;
+	padding: 0;
+	width: calc(100% - 150px);
+}
+.subscribe-popup-content input[type="email"] {
+	height: 36px;
+	background: #f5f5f5;
+	border: 1px solid #ccc;
+	width: 100%;
+	padding: 0 5px;
+	font-style: italic;
+}
+.subscribe-popup-content .es_button {
+	float: right;
+	padding: 0;
+}
+.subscribe-popup-content input[type="submit"] {
+	background: #5d1c71;
+	color: #fff;
+	border-radius: 30px;
+	text-transform: uppercase;
+	border: none;
+	padding: 10px 30px;
+}
+.subscribe-popup-content .es_shortcode_form_email {
+	display: none;
+}
+.subscribe-popup-content #es_shortcode_msg {
+	margin-top: 36px;
+	line-height: 1.4;
 }
 /* RESPONSIVE */
 @media (max-width: 1200px) {
@@ -342,6 +442,12 @@ h2.offer-title {
     position: absolute;
     right: 35px;
     top: 4px;
+	}
+	.et_header_style_centered header#main-header.et-fixed-header .logo_container {
+		height: auto;
+	}
+	.head_subscribe {
+		display: none;
 	}
 }
 @media (max-width: 400px) {

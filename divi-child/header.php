@@ -307,6 +307,7 @@ h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
 				ob_start();
 			?>
 				<div class="logo_container">
+					<div class="head_subscribe">Subscribe to Avima</div>
 					<span class="logo_helper"></span>
 					<a href="<?php echo esc_url( home_url( '/' ) ); ?>">
 						<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>
