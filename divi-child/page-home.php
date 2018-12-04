@@ -5,9 +5,9 @@ get_header(); ?>
 	<div class="container">
 		<div id="content-area" class="clearfix">
 			<?php // top banner
-				$banner = get_field('top_banner', 'option');
+				$banner = get_field('home_banner', 'option');
 				if($banner != '') {
-					if(get_field('top_banner_publish', 'option') || current_user_can('administrator')) {
+					if(get_field('home_banner_publish', 'option') || current_user_can('administrator')) {
 						echo '<div class="top-banner">'.$banner.'</div>';
 					}
 				}
@@ -114,9 +114,9 @@ get_header(); ?>
 			?>
 			</div> <!-- #left-area -->
 			<?php 
-				$banner = get_field('home_banner', 'option');
+				$banner = get_field('home_right_banner', 'option');
 				if($banner != '') {
-					if(get_field('home_banner_publish', 'option') || current_user_can('administrator')) {
+					if(get_field('home_right_banner_publish', 'option') || current_user_can('administrator')) {
 						echo '<div class="home-banner">'.$banner.'</div>';
 					}
 				}

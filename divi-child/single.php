@@ -32,9 +32,9 @@ $offer_sections = get_field('multioffers');
 		<div id="content-area" class="clearfix">
 			<?php // top banner
 				if(!$offer_sections){
-					$banner = get_field('top_banner', 'option');
+					$banner = get_field('article_top_banner', 'option');
 					if($banner != '') {
-						if(get_field('top_banner_publish', 'option') || current_user_can('administrator')) {
+						if(get_field('article_top_banner_publish', 'option') || current_user_can('administrator')) {
 							echo '<div class="top-banner">'.$banner.'</div>';
 						}
 					}
@@ -210,16 +210,16 @@ $offer_sections = get_field('multioffers');
 			<?php if(!$offer_sections){ ?>
 			<div class="right-banner">
 			<?php 
-				$right_banner = get_field('right_banner', 'option');
+				$right_banner = get_field('article_right_banner', 'option');
 				if($right_banner != '') {
-					if(get_field('right_banner_publish', 'option') || current_user_can('administrator')) {
+					if(get_field('article_right_banner_publish', 'option') || current_user_can('administrator')) {
 						echo $right_banner;
 						$right_banner_show = true;
 					}
 				}
-				$right_banner_2 = get_field('right_banner_2', 'option');
+				$right_banner_2 = get_field('article_right_2_banner', 'option');
 				if($right_banner_2 != '') {
-					if(get_field('right_banner_2_publish', 'option') || current_user_can('administrator')) {
+					if(get_field('article_right_2_banner_publish', 'option') || current_user_can('administrator')) {
 						echo $right_banner_2;
 						$right_banner2_show = true;
 					}
