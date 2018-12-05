@@ -141,7 +141,7 @@ function theme_parse_request( $query ) {
 
 // Add theme options
 acf_add_options_sub_page( array(
-	'title'  => 'Theme Fields',
+	'title'  => 'Ad banners',
 	'parent' => 'themes.php',
 ) );
 
@@ -212,27 +212,17 @@ function custom_list_categories() {
 }
 
 // Init
-add_action('init', 'init_404');
-function init_404() {
+add_action('init', 'init_301');
+function init_301() {
 	
 	// Old domain redirect
-	if( $_SERVER['SERVER_NAME'] == 'impressive.care' ) {
-		global $wp_query;
-		$wp_query->set_404();
-		status_header( 404 );
-		get_template_part( 404 );
-		exit();
+	if( $_SERVER['SERVER_NAME'] == 'impressive.care' || $_SERVER['SERVER_NAME'] == 'www.impressive.care' ) {
+		wp_redirect( 'http://avima.com' . $_SERVER['REQUEST_URI'], 301 );
+		exit;
 	}
 	
 	// Check amazon in stock - CRON
 	if( isset($_GET['ex_cron']) && $_GET['ex_cron'] == 'amazon_in_stock' ) {
-		// Testing //
-		$old = get_post_field('post_content', 1306);
-		 $my_post = array(
-      'ID'           => 1306,
-      'post_content' => $old.'ABC ',
-			);
-		wp_update_post( $my_post );
 		$mop_args = array(
 			'post_type' => 'post',
 			'posts_status' => 'any',
@@ -249,31 +239,71 @@ function init_404() {
 				)
 			)
 		);
-		// Testing //
 		$mop_query = new WP_Query( $mop_args );
 		if($mop_query) {
+			$outstock = 0;
+			$offers_in = array();
+			$offers_out = array();
 			foreach($mop_query as $mop) {
 				$offer_sections = get_field('multioffers', $mop->ID);
 				if($offer_sections) {
 					foreach($offer_sections as $section) {
 						foreach($section['offers'] as $offer) {
-							$call_to_action_link = get_field('call_to_action_link', $offer->ID);
+							//$call_to_action_link = get_field('call_to_action_link', $offer->ID);
+							$call_to_action_link = 'https://www.amazon.com/gp/product/B0798BBMLP';
 							if( amazon_in_stock($call_to_action_link) ) {
-								update_field('amazon_in_stock', 'yes', $offer->ID);
+								$offers_in[] = $offer->ID;
+								echo 'IN --- <a target="_blank" href="'.$call_to_action_link.'">'.$call_to_action_link.'</a><br>';
 							} else {
-								update_field('amazon_in_stock', 'no', $offer->ID);
+								$offers_out[] = $offer->ID;
+								echo 'OUT --- <a target="_blank" href="'.$call_to_action_link.'">'.$call_to_action_link.'</a><br>';
+								$outstock += 1;
 							}
+							exit;
 						}
 					}
 				}
 			}
+			if($outstock < 3) {
+				foreach($offers_in as $offer_id) {
+					update_field('amazon_in_stock', 'yes', $offer_id);
+				}
+				foreach($offers_out as $offer_id) {
+					update_field('amazon_in_stock', 'no', $offer_id);
+				}
+			} else {
+				$message = '';
+				wp_mail( 'samsonov.teamwork@gmail.com', 'Amazon 3+ items go out of stock', $message );
+			}
+			/*print_r($offers_in);
+			print_r($offers_out);*/
 		}
+		
+		// TEST***
+		$old = get_post_field('post_content', 1306);
+		$new = '';
+		$i=1;
+		foreach($offers_out as $offer_id) {
+			$new .= $i.'. '. date('Y-m-d H:i') . ' ' . get_edit_post_link($offer_id) . "<br />";
+			$i++;
+		}
+		$new .= '<br />';
+		wp_update_post( array(
+			'ID'           => 1306,
+			'post_content' => $old.$new,
+		));
+		// ***TEST
+		
+		// EXIT
+		exit;
 	}
 }
 
 // Check amazon in stock
 function amazon_in_stock($url) {
 	$html = file_get_contents($url);
+	//sleep(60);
+	//var_dump($html);
 	if( $html && preg_match_all('/Add to Shopping Cart/', $html) ) {
 		return true;
 	} else {
