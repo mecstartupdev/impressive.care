@@ -36,6 +36,7 @@ body.et-db #et-boc .et_pb_section {
 #main-content .container {
 	padding: 8px 0 50px;
 	max-width: 1200px;
+	width: 100%;
 }
 .et_pb_post .entry-content {
 	padding-top: 0;
@@ -386,6 +387,9 @@ h2.offer-title {
 }
 /* RESPONSIVE */
 @media (max-width: 1200px) {
+	#main-content .container {
+		width: 80%;
+	}
 	.title-content {
 		margin-left: 10px;
 	}
