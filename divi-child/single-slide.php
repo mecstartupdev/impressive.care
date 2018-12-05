@@ -29,6 +29,35 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 	<div class="container">
 		<div id="content-area" class="clearfix">
 			<?php while ( have_posts() ) : the_post(); ?>
+				<?php
+				// **** NEXT SLIDE
+				$nextslide = '';
+				$parent_slide = get_field('parent_slide');
+				if(!$parent_slide) {
+					$next_post = get_posts(array(
+						'post_type' => 'slide',
+						'meta_key' => 'parent_slide',
+						'meta_value' => $post->ID,
+						'menu_order' => 1
+					));
+					if($next_post) {
+						$nextslide = '<div class="slide-next"><a class="cs-btn" href="'.get_permalink($next_post[0]->ID).'">NEXT SLIDE >></a></div>';
+					} 
+				} else {
+					$next_post = get_posts(array(
+						'post_type' => 'slide',
+						'meta_key' => 'parent_slide',
+						'meta_value' => $parent_slide,
+						'menu_order' => $post->menu_order + 1
+					));
+					if($next_post) {
+						$nextslide = '<div class="slide-next"><a class="cs-btn" href="'.get_permalink($next_post[0]->ID).'">NEXT SLIDE >></a></div>';
+					} elseif($link_last_slide = get_field('link_last_slide')) {
+						$nextslide = '<div class="slide-next"><a class="cs-btn" href="<?php echo $link_last_slide; ?>">'.get_field('cta_last_slide').'</a></div>';
+					}
+				} 
+				// NEXT SLIDE ****
+				?>
 				<?php if (et_get_option('divi_integration_single_top') <> '' && et_get_option('divi_integrate_singletop_enable') == 'on') echo(et_get_option('divi_integration_single_top')); ?>
 				<div class="title-content">
 					<?php /* ?><div class="post-category"><?php echo get_the_title($post->post_parent); ?></div><?php */ ?>
@@ -107,6 +136,10 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 								echo '<div class="mobile-banner">'.$banner.'</div>';
 							}
 						}
+						// NEXT SLIDE
+						if(!$parent_slide) {
+							echo $nextslide;
+						}
 					?>
 					<div class="entry-content">
 					<?php
@@ -156,31 +189,10 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 				</article> <!-- .et_pb_post -->
 
 			<?php endwhile; ?>
-			<?php
-				$parent_slide = get_field('parent_slide');
-				if(!$parent_slide) {
-				$next_post = get_posts(array(
-					'post_type' => 'slide',
-					'meta_key' => 'parent_slide',
-					'meta_value' => $post->ID,
-					'menu_order' => 1
-				));
-				if($next_post) {
+			<?php 
+				// NEXT SLIDE
+				echo $nextslide;
 			?>
-				<div class="slide-next"><a class="cs-btn" href="<?php echo get_permalink($next_post[0]->ID); ?>">NEXT SLIDE >></a></div>
-			<?php	} } else {
-				$next_post = get_posts(array(
-					'post_type' => 'slide',
-					'meta_key' => 'parent_slide',
-					'meta_value' => $parent_slide,
-					'menu_order' => $post->menu_order + 1
-				));
-				if($next_post) {
-			?>
-				<div class="slide-next"><a class="cs-btn" href="<?php echo get_permalink($next_post[0]->ID); ?>">NEXT SLIDE >></a></div>
-			<?php } elseif($link_last_slide = get_field('link_last_slide')) { ?>
-				<div class="slide-next"><a class="cs-btn" href="<?php echo $link_last_slide; ?>"><?php echo get_field('cta_last_slide'); ?></a></div>
-			<?php } } ?>
 			<?php //bottom banner
 				$banner = get_field('bottom_banner', 'option');
 				if($banner != '') {
