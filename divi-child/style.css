@@ -112,6 +112,9 @@ h2.entry-title {
 	position: relative;
 	height: 53px;
 }
+.et_header_style_centered header#main-header.et-fixed-header .logo_container {
+	height: 53px;
+}
 #main-header .logo_container a {
 	font-size: 48px;
 	font-weight: 700;
@@ -488,6 +491,9 @@ h2.offer-title {
 	}
 }
 @media (min-width: 981px) {
+	#page-container {
+		padding-top: 123px !important;
+	}
 	#main-content .container:before {
 		background-color: transparent;
 	}
