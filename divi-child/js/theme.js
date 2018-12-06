@@ -17,4 +17,8 @@ jQuery(function($) {
 			$('.subscribe-popup').hide();
 		});
 	}
+	// Sticky ads
+	$('.threecolumn-left').hcSticky({
+		top: 123,
+	});
 });
