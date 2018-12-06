@@ -76,7 +76,8 @@ body.et-db #et-boc .et_pb_section {
 	box-shadow: 0 0px 0 rgba(0,0,0,0);
 }
 .title-content {
-	margin-left: 170px;
+	text-align: center;
+	margin: 10px 0;
 }
 h1.entry-title,
 h2.entry-title {
