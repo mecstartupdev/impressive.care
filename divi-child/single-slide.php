@@ -53,7 +53,7 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 					if($next_post) {
 						$nextslide = '<div class="slide-next"><a class="cs-btn" href="'.get_permalink($next_post[0]->ID).'">NEXT SLIDE >></a></div>';
 					} elseif($link_last_slide = get_field('link_last_slide')) {
-						$nextslide = '<div class="slide-next"><a class="cs-btn" href="<?php echo $link_last_slide; ?>">'.get_field('cta_last_slide').'</a></div>';
+						$nextslide = '<div class="slide-next"><a class="cs-btn" href="'.$link_last_slide.'">'.get_field('cta_last_slide').'</a></div>';
 					}
 				} 
 				// NEXT SLIDE ****
