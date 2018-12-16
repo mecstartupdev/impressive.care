@@ -311,3 +311,109 @@ function amazon_in_stock($url) {
 		return false;
 	}
 }
+
+// Add Parent Slide to Quick Edit
+add_filter( 'manage_slide_posts_columns', 'avima_manage_slide_posts_columns' );
+function avima_manage_slide_posts_columns( $columns ) {
+	$columns['parent_slide'] = 'Parent slide';
+	return $columns;
+}
+add_action( 'manage_slide_posts_custom_column', 'avima_manage_slide_posts_custom_column', 10, 2 );
+function avima_manage_slide_posts_custom_column( $column_name, $post_id ) {
+	if ( 'parent_slide' == $column_name ) {
+		$parent_slide = get_post_meta( $post_id, 'parent_slide', true );
+		if ( $parent_slide ) {
+			echo get_post_field('post_title', $parent_slide);
+		} else {
+			echo 'None';
+		}
+	}
+}
+add_action('quick_edit_custom_box',  'avima_quick_edit_custom_box', 10, 2);
+function avima_quick_edit_custom_box($column_name, $post_type) {
+	if ($column_name != 'parent_slide') return;
+	?>
+	<fieldset class="inline-edit-col-left">
+	<div class="inline-edit-col">
+			<span class="title">Parent slide</span>
+			<input type="hidden" name="parent_slide_noncename" id="parent_slide_noncename" value="" />
+			<?php
+				$slides = get_posts( array( 
+					'post_type' => 'slide',
+					'numberposts' => -1,
+					'post_status' => 'publish')
+				);
+			?>
+			<select name="field_parent_slide" id="field_parent_slide">
+				<option value="0">None</option>
+				<?php 
+					foreach ($slides as $slide) {
+						echo "<option value='{$slide->ID}'>{$slide->post_title}</option>\n";
+					}
+				?>
+			</select>
+	</div>
+	</fieldset>
+	<?php
+}
+add_action('admin_footer', 'avima_admin_footer');
+function avima_admin_footer() {
+	global $current_screen;
+	if (($current_screen->id != 'edit-slide') || ($current_screen->post_type != 'slide')) return; 
+	?>
+	<script type="text/javascript">
+		jQuery( function( $ ) {
+			var prnt = $( '.inline-edit-col #post_parent' );
+			prnt.hide();
+			prnt.siblings('span').hide();
+		});
+		function set_inline_widget_set(parent_slide, nonce) {
+			// revert Quick Edit menu so that it refreshes properly
+			inlineEditPost.revert();
+			var widgetInput = document.getElementById('field_parent_slide');
+			var nonceInput = document.getElementById('parent_slide_noncename');
+			nonceInput.value = nonce;
+			// check option manually
+			for (i = 0; i < widgetInput.options.length; i++) {
+				if (widgetInput.options[i].value == parent_slide) { 
+					widgetInput.options[i].setAttribute("selected", "selected"); 
+				} else { widgetInput.options[i].removeAttribute("selected"); }
+			}
+			inlineEditPost.revert();
+		}
+	</script>
+	<?php
+}
+add_filter('page_row_actions', 'avima_page_row_actions', 10, 2);
+function avima_page_row_actions($actions, $post) {
+	global $current_screen;
+	if (($current_screen->id != 'edit-slide') || ($current_screen->post_type != 'slide')) return $actions; 
+	$nonce = wp_create_nonce( 'parent_slide_'.$post->ID);
+	$parent_slide = get_post_meta( $post->ID, 'parent_slide', TRUE); 
+	$actions['inline hide-if-no-js'] = '<a href="#" class="editinline" title="';
+	$actions['inline hide-if-no-js'] .= esc_attr( __( 'Edit this item inline' ) ) . '" ';
+	$actions['inline hide-if-no-js'] .= " onclick=\"set_inline_widget_set('{$parent_slide}', '{$nonce}')\">"; 
+	$actions['inline hide-if-no-js'] .= __( 'Quick&nbsp;Edit' );
+	$actions['inline hide-if-no-js'] .= '</a>';
+	return $actions;    
+}
+add_action('save_post_slide', 'avima_save_post_slide');
+function avima_save_post_slide($post_id) {
+	if ( defined('DOING_AUTOSAVE') && DOING_AUTOSAVE ) 
+		return $post_id;    
+	if ( 'slide' == $_POST['post_type'] ) {
+		if ( !current_user_can( 'edit_page', $post_id ) )
+				return $post_id;
+	} else {
+		if ( !current_user_can( 'edit_post', $post_id ) )
+		return $post_id;
+	}
+	$post = get_post($post_id);
+	if (isset($_POST['field_parent_slide']) && ($post->post_type != 'revision')) {
+		$field_parent_slide = esc_attr($_POST['field_parent_slide']);
+		if ($field_parent_slide)
+			update_post_meta( $post_id, 'parent_slide', $field_parent_slide);     
+		else
+			delete_post_meta( $post_id, 'parent_slide');     
+	}
+}
